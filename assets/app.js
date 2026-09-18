@@ -11568,6 +11568,7 @@
 							backgroundClip: "text",
 							filter: "drop-shadow(0 2px 12px rgba(106,61,232,0.4))"
 						},
+						children: "フォトラリー"
 					})]
 				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
