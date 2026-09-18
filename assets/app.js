@@ -11526,7 +11526,7 @@
 				className: "relative z-10 flex flex-col items-center justify-center flex-1 px-5 py-16 text-center gap-6",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold text-sm",
+						className: "inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-lg",
 						style: {
 							background: "rgba(255,255,255,0.22)",
 							backdropFilter: "blur(8px)",
@@ -11540,7 +11540,7 @@
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 							className: "font-black leading-none",
 							style: {
-								fontSize: "clamp(2.6rem, 11vw, 4.5rem)",
+								fontSize: "clamp(4.0rem, 16vw, 6.5rem)",
 								background: "linear-gradient(135deg, #ffffff 0%, #c8b8ff 50%, #a5d0ff 100%)",
 								WebkitBackgroundClip: "text",
 								WebkitTextFillColor: "transparent",
@@ -11549,11 +11549,11 @@
 								letterSpacing: "-0.01em",
 								filter: "drop-shadow(0 2px 16px rgba(106,61,232,0.5))"
 							},
-							children: "八重滝"
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ruby", { children: ["八重滝", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rt", { style: { fontSize: "0.4em" }, children: "やえだき" })] })
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 							className: "font-black leading-none",
 							style: {
-								fontSize: "clamp(1.8rem, 7.5vw, 3rem)",
+								fontSize: "clamp(2.5rem, 11vw, 4.5rem)",
 								background: "linear-gradient(135deg, #ffffff 0%, #c8b8ff 50%, #a5d0ff 100%)",
 								WebkitBackgroundClip: "text",
 								WebkitTextFillColor: "transparent",
@@ -11878,7 +11878,8 @@
 							border: "2px solid #ffe0cc"
 						},
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "relative h-52 bg-orange-100",
+							className: "relative bg-orange-100",
+							style: { height: "320px" },
 							children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 									src: IMAGES.waterfall,
@@ -11919,7 +11920,8 @@
 								border: "2px solid #e8e0ff"
 							},
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "relative h-32 bg-purple-100",
+								className: "relative bg-purple-100",
+								style: { height: "200px" },
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 									src: IMAGES.satoyama,
 									alt: "里山の風景",
@@ -11946,7 +11948,8 @@
 								border: "2px solid #d8eeff"
 							},
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "relative h-32 bg-blue-100",
+								className: "relative bg-blue-100",
+								style: { height: "200px" },
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 									src: IMAGES.village,
 									alt: "入間の風景",
