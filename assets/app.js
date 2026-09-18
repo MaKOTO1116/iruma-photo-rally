@@ -11541,7 +11541,7 @@
 						border: "2px solid rgba(255,255,255,0.4)",
 						color: "white"
 					},
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "🗓" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "応募期間：2026/08/01〜2027/03/31" })]
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "🗓" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { dangerouslySetInnerHTML: { __html: "<ruby>応募期間<rt>おうぼきかん</rt></ruby>：2026/08/01〜2027/03/31" } })]
 				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex flex-col items-center gap-1",
@@ -11568,27 +11568,23 @@
 							backgroundClip: "text",
 							filter: "drop-shadow(0 2px 12px rgba(106,61,232,0.4))"
 						},
-						children: "フォトラリー"
+						dangerouslySetInnerHTML: { __html: "<ruby>フォトラリー<rt>ふぉとらりー</rt></ruby>" }
 					})]
 				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 					className: "text-white/90 font-bold text-base max-w-xs leading-relaxed",
-					children: [
-						"美しい八重滝を写真に撮って",
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
-						"インスタグラムに投稿しよう！"
-					]
+					dangerouslySetInnerHTML: { __html: "<ruby>美<rt>うつく</rt></ruby>しい<ruby>八重滝<rt>やえだき</rt></ruby>を<ruby>写真<rt>しゃしん</rt></ruby>に<ruby>撮<rt>と</rt></ruby>って<br>インスタグラムに<ruby>投稿<rt>とうこう</rt></ruby>しよう！" }
 				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex flex-col items-center gap-2",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-white/80 text-sm font-bold",
-						children: "投稿時は↓のハッシュタグを忘れずに！"
+						dangerouslySetInnerHTML: { __html: "<ruby>投稿時<rt>とうこうじ</rt></ruby>は↓のハッシュタグを<ruby>忘<rt>わす</rt></ruby>れずに！" }
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HashtagBadge, { size: "lg" })]
 				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "mt-4 float-anim text-white/60 text-sm flex flex-col items-center gap-1",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "スクロールして詳細を見る" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { dangerouslySetInnerHTML: { __html: "スクロールして<ruby>詳細<rt>しょうさい</rt></ruby>を<ruby>見<rt>み</rt></ruby>る" } }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "text-2xl",
 						children: "↓"
 					})]
@@ -11612,20 +11608,20 @@
 		{
 			step: "01",
 			emoji: "🏞️",
-			title: "八重滝を訪れる",
-			body: "島根県雲南市掛合町入間にある「八重滝」へ。美しい自然に癒されながら散策しましょう！"
+			title: "<ruby>八重滝<rt>やえだき</rt></ruby>を<ruby>訪<rt>おとず</rt></ruby>れる",
+			body: "<ruby>島根県<rt>しまねけん</rt></ruby><ruby>雲南市<rt>うんなんし</rt></ruby><ruby>掛合町<rt>かけやちょう</rt></ruby><ruby>入間<rt>いるま</rt></ruby>にある「<ruby>八重滝<rt>やえだき</rt></ruby>」へ。<ruby>美<rt>うつく</rt></ruby>しい<ruby>自然<rt>しぜん</rt></ruby>に<ruby>癒<rt>いや</rt></ruby>されながら<ruby>散策<rt>さんさく</rt></ruby>しましょう！"
 		},
 		{
 			step: "02",
 			emoji: "📸",
-			title: "写真を撮る",
-			body: "滝、清流、紅葉…お気に入りの1枚を撮影！あなたならではの視点で八重滝を切り取ろう。"
+			title: "<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>る",
+			body: "<ruby>滝<rt>たき</rt></ruby>、<ruby>清流<rt>せいりゅう</rt></ruby>、<ruby>紅葉<rt>こうよう</rt></ruby>…お<ruby>気<rt>き</rt></ruby>に<ruby>入<rt>い</rt></ruby>りの1<ruby>枚<rt>まい</rt></ruby>を<ruby>撮影<rt>さつえい</rt></ruby>！あなたならではの<ruby>視点<rt>してん</rt></ruby>で<ruby>八重滝<rt>やえだき</rt></ruby>を<ruby>切<rt>き</rt></ruby>り<ruby>取<rt>と</rt></ruby>ろう。"
 		},
 		{
 			step: "03",
 			emoji: "📱",
-			title: "Instagramに投稿",
-			body: "ハッシュタグをつけてInstagramに投稿するだけで応募完了！公開アカウントでの投稿が必要です。"
+			title: "Instagramに<ruby>投稿<rt>とうこう</rt></ruby>",
+			body: "ハッシュタグをつけてInstagramに<ruby>投稿<rt>とうこう</rt></ruby>するだけで<ruby>応募完了<rt>おうぼかんりょう</rt></ruby>！<ruby>公開<rt>こうかい</rt></ruby>アカウントでの<ruby>投稿<rt>とうこう</rt></ruby>が<ruby>必要<rt>ひつよう</rt></ruby>です。"
 		}
 	];
 	/** 「投稿で豪華景品GET」セクション：応募の3ステップ＋ハッシュタグの強調 */
@@ -11646,21 +11642,17 @@
 						className: "font-black text-2xl leading-tight",
 						style: { color: "#3a1a8a" },
 						children: [
-							"投稿で",
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { dangerouslySetInnerHTML: { __html: "<ruby>投稿<rt>とうこう</rt></ruby>で" } }),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								style: { color: "#6A3DE8" },
-								children: "豪華景品"
+								dangerouslySetInnerHTML: { __html: "<ruby>豪華景品<rt>ごうかけいひん</rt></ruby>" }
 							}),
 							"GET！"
 						]
 					}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 						className: "text-gray-600 font-bold mt-2 text-sm",
-						children: [
-							"八重滝の写真をInstagramに投稿するだけで",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
-							"応募完了！抽選で素敵な賞品が当たります✨"
-						]
+						dangerouslySetInnerHTML: { __html: "<ruby>八重滝<rt>やえだき</rt></ruby>の<ruby>写真<rt>しゃしん</rt></ruby>をInstagramに<ruby>投稿<rt>とうこう</rt></ruby>するだけで<br><ruby>応募完了<rt>おうぼかんりょう</rt></ruby>！<ruby>抽選<rt>ちゅうせん</rt></ruby>で<ruby>素敵<rt>すてき</rt></ruby>な<ruby>賞品<rt>しょうひん</rt></ruby>が<ruby>当<rt>あ</rt></ruby>たります✨" }
 					})
 					]
 				}),
@@ -11686,11 +11678,11 @@
 								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "font-black text-base",
 									style: { color: "#3a1a8a" },
-									children: title
+									dangerouslySetInnerHTML: { __html: title }
 								})]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-sm text-gray-600 font-medium leading-relaxed",
-								children: body
+								dangerouslySetInnerHTML: { __html: body }
 							})]
 						})]
 					}, step))
@@ -11705,12 +11697,12 @@
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "font-black text-base",
 						style: { color: "#3a1a8a" },
-						children: "📌 投稿時は必ずこのタグをつけてね！"
+						dangerouslySetInnerHTML: { __html: "📌 <ruby>投稿時<rt>とうこうじ</rt></ruby>は<ruby>必<rt>かなら</rt></ruby>ずこのタグをつけてね！" }
 					}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HashtagBadge, { size: "lg" }),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-xs text-gray-500 font-bold",
-						children: "※公開アカウントでの投稿が応募の条件です"
+						dangerouslySetInnerHTML: { __html: "※<ruby>公開<rt>こうかい</rt></ruby>アカウントでの<ruby>投稿<rt>とうこう</rt></ruby>が<ruby>応募<rt>おうぼ</rt></ruby>の<ruby>条件<rt>じょうけん</rt></ruby>です" }
 					})
 					]
 				})
@@ -11759,7 +11751,7 @@
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "text-xs text-center font-bold",
 				style: { color: "#6A3DE8" },
-				children: "📍 このページのQRコードを現地に掲示しています"
+				dangerouslySetInnerHTML: { __html: "📍 このページのQRコードを<ruby>現地<rt>げんち</rt></ruby>に<ruby>掲示<rt>けいじ</rt></ruby>しています" }
 			})]
 		});
 	}
@@ -11782,11 +11774,11 @@
 					}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 						className: "font-black text-2xl text-white",
-						children: "イベントポスター"
+						dangerouslySetInnerHTML: { __html: "イベントポスター" }
 					}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-white/80 text-sm font-bold mt-1",
-						children: "現地にも掲示しています"
+						dangerouslySetInnerHTML: { __html: "<ruby>現地<rt>げんち</rt></ruby>にも<ruby>掲示<rt>けいじ</rt></ruby>しています" }
 					})
 					]
 				}),
@@ -11816,7 +11808,7 @@
 							}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-white font-black text-xl",
-								children: "八重滝フォトラリー"
+								dangerouslySetInnerHTML: { __html: "<ruby>八重滝<rt>やえだき</rt></ruby>フォトラリー" }
 							}),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-white/70 font-bold text-sm mt-1",
@@ -11830,7 +11822,7 @@
 								background: "rgba(255,255,255,0.20)",
 								border: "1px solid rgba(255,255,255,0.35)"
 							},
-							children: "※ポスター画像は後日差し替えてください"
+							dangerouslySetInnerHTML: { __html: "※ポスター<ruby>画像<rt>がぞう</rt></ruby>は<ruby>後日<rt>ごじつ</rt></ruby><ruby>差<rt>さ</rt></ruby>し<ruby>替<rt>か</rt></ruby>えてください" }
 						})
 						]
 					})
@@ -11842,12 +11834,12 @@
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 						className: "font-black text-center text-base mb-4",
 						style: { color: "#3a1a8a" },
-						children: "📲 このページをシェア"
+						dangerouslySetInnerHTML: { __html: "📲 このページをシェア" }
 					}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QRPlaceholder, {}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-xs text-center text-gray-400 font-bold mt-3",
-						children: "※URLは後日差し替え予定"
+						dangerouslySetInnerHTML: { __html: "※URLは<ruby>後日<rt>ごじつ</rt></ruby><ruby>差<rt>さ</rt></ruby>し<ruby>替<rt>か</rt></ruby>え<ruby>予定<rt>よてい</rt></ruby>" }
 					})
 					]
 				})
@@ -11873,14 +11865,7 @@
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
 						className: "font-black text-2xl leading-tight",
 						style: { color: "#3a1a8a" },
-						children: [
-							"入間って",
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								style: { color: "#FF6B35" },
-								children: "こんなところ"
-							})
-						]
+						dangerouslySetInnerHTML: { __html: "<ruby>入間<rt>いるま</rt></ruby>って<br><span style=\"color: #FF6B35\">こんなところ</span>" }
 					})]
 				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -11907,7 +11892,7 @@
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 								className: "text-xs font-black px-3 py-1 rounded-full text-white",
 								style: { background: "linear-gradient(135deg, #FF6B35, #E84545)" },
-								children: "📍 八重滝（やえたき）"
+								dangerouslySetInnerHTML: { __html: "📍 <ruby>八重滝<rt>やえだき</rt></ruby>" }
 							})
 						})
 						]
@@ -11916,10 +11901,10 @@
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 							className: "font-black text-lg mb-2",
 							style: { color: "#3a1a8a" },
-							children: "八重の滝めぐり"
+							dangerouslySetInnerHTML: { __html: "<ruby>八重<rt>やえ</rt></ruby>の<ruby>滝<rt>たき</rt></ruby>めぐり" }
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-sm text-gray-600 font-medium leading-relaxed",
-							children: "島根県雲南市掛合町入間に広がる「八重滝」は、大小8つの滝が連なる神秘的なスポット。 春の新緑・夏の涼・秋の紅葉・冬の静寂と、四季折々の表情が楽しめます。"
+							dangerouslySetInnerHTML: { __html: "<ruby>島根県<rt>しまねけん</rt></ruby><ruby>雲南市<rt>うんなんし</rt></ruby><ruby>掛合町<rt>かけやちょう</rt></ruby><ruby>入間<rt>いるま</rt></ruby>に<ruby>広<rt>ひろ</rt></ruby>がる「<ruby>八重滝<rt>やえだき</rt></ruby>」は、<ruby>大小<rt>だいしょう</rt></ruby>8つの<ruby>滝<rt>たき</rt></ruby>が<ruby>連<rt>つら</rt></ruby>なる<ruby>神秘的<rt>しんぴてき</rt></ruby>なスポット。<ruby>春<rt>はる</rt></ruby>の<ruby>新緑<rt>しんりょく</rt></ruby>・<ruby>夏<rt>なつ</rt></ruby>の<ruby>涼<rt>りょう</rt></ruby>・<ruby>秋<rt>あき</rt></ruby>の<ruby>紅葉<rt>こうよう</rt></ruby>・<ruby>冬<rt>ふゆ</rt></ruby>の<ruby>静寂<rt>せいじゃく</rt></ruby>と、<ruby>四季折々<rt>しきおりおり</rt></ruby>の<ruby>表情<rt>ひょうじょう</rt></ruby>が<ruby>楽<rt>たの</rt></ruby>しめます。" }
 						})]
 					})]
 				}),
@@ -11947,10 +11932,10 @@
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
 								className: "font-black text-sm mb-1",
 								style: { color: "#3a1a8a" },
-								children: "里山の自然"
+								dangerouslySetInnerHTML: { __html: "<ruby>里山<rt>さとやま</rt></ruby>の<ruby>自然<rt>しぜん</rt></ruby>" }
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs text-gray-500 font-medium leading-snug",
-								children: "豊かな緑と清らかな水に囲まれた癒しの空間。"
+								dangerouslySetInnerHTML: { __html: "<ruby>豊<rt>ゆた</rt></ruby>かな<ruby>緑<rt>みどり</rt></ruby>と<ruby>清<rt>きよ</rt></ruby>らかな<ruby>水<rt>みず</rt></ruby>に<ruby>囲<rt>かこ</rt></ruby>まれた<ruby>癒<rt>いや</rt></ruby>しの<ruby>空間<rt>くうかん</rt></ruby>。" }
 							})]
 						})]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -11975,10 +11960,10 @@
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
 								className: "font-black text-sm mb-1",
 								style: { color: "#3a1a8a" },
-								children: "のどかな集落"
+								dangerouslySetInnerHTML: { __html: "のどかな<ruby>集落<rt>しゅうらく</rt></ruby>" }
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "text-xs text-gray-500 font-medium leading-snug",
-								children: "昔ながらの暮らしと人のつながりが残る入間。"
+								dangerouslySetInnerHTML: { __html: "<ruby>昔<rt>むかし</rt></ruby>ながらの<ruby>暮<rt>く</rt></ruby>らしと<ruby>人<rt>ひと</rt></ruby>のつながりが<ruby>残<rt>のこ</rt></ruby>る<ruby>入間<rt>いるま</rt></ruby>。" }
 							})]
 						})]
 					})]
@@ -11997,10 +11982,10 @@
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
 							className: "font-black text-base mb-1",
 							style: { color: "#3a1a8a" },
-							children: "入間交流センター"
+							dangerouslySetInnerHTML: { __html: "<ruby>入間<rt>いるま</rt></ruby><ruby>交流<rt>こうりゅう</rt></ruby>センター" }
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-sm text-gray-600 font-medium leading-relaxed",
-							children: "旧小学校を活用した宿泊・交流施設。地域の人々との交流や自然体験が楽しめます。 入間を訪れた際はぜひお立ち寄りを！"
+							dangerouslySetInnerHTML: { __html: "<ruby>旧<rt>きゅう</rt></ruby><ruby>小学校<rt>しょうがっこう</rt></ruby>を<ruby>活用<rt>かつよう</rt></ruby>した<ruby>宿泊<rt>しゅくはく</rt></ruby>・<ruby>交流施設<rt>こうりゅうしせつ</rt></ruby>。<ruby>地域<rt>ちいき</rt></ruby>の<ruby>人々<rt>ひとびと</rt></ruby>との<ruby>交流<rt>こうりゅう</rt></ruby>や<ruby>自然体験<rt>しぜんたいけん</rt></ruby>が<ruby>楽<rt>たの</rt></ruby>しめます。<ruby>入間<rt>いるま</rt></ruby>を<ruby>訪<rt>おとず</rt></ruby>れた<ruby>際<rt>さい</rt></ruby>はぜひお<ruby>立<rt>た</rt></ruby>ち<ruby>寄<rt>よ</rt></ruby>りを！" }
 						})]
 					})]
 				})
@@ -12027,7 +12012,7 @@
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 						className: "font-black text-2xl",
 						style: { color: "#3a1a8a" },
-						children: "入間をもっと知る"
+						dangerouslySetInnerHTML: { __html: "<ruby>入間<rt>いるま</rt></ruby>をもっと<ruby>知<rt>し</rt></ruby>る" }
 					})]
 				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -12042,7 +12027,7 @@
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 							className: "text-xl",
 							children: "🌐"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "公式ホームページを見る" })]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { dangerouslySetInnerHTML: { __html: "<ruby>公式<rt>こうしき</rt></ruby>ホームページを<ruby>見<rt>み</rt></ruby>る" } })]
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 						href: IRUMA_INSTAGRAM_URL,
 						target: "_blank",
@@ -12056,7 +12041,7 @@
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 							className: "text-xl",
 							children: "📸"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Instagramをフォロー" })]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { dangerouslySetInnerHTML: { __html: "Instagramをフォロー" } })]
 					})]
 				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -12064,7 +12049,7 @@
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "font-black text-sm",
 						style: { color: "#6A3DE8" },
-						children: "写真には必ず！"
+						dangerouslySetInnerHTML: { __html: "<ruby>写真<rt>しゃしん</rt></ruby>には<ruby>必<rt>かなら</rt></ruby>ず！" }
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HashtagBadge, { size: "lg" })]
 				})
 				]
