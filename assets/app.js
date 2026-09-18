@@ -11568,7 +11568,6 @@
 							backgroundClip: "text",
 							filter: "drop-shadow(0 2px 12px rgba(106,61,232,0.4))"
 						},
-						dangerouslySetInnerHTML: { __html: "<ruby>フォトラリー<rt>ふぉとらりー</rt></ruby>" }
 					})]
 				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
@@ -11644,9 +11643,9 @@
 						children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { dangerouslySetInnerHTML: { __html: "<ruby>投稿<rt>とうこう</rt></ruby>で" } }),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								style: { color: "#6A3DE8" },
-								dangerouslySetInnerHTML: { __html: "<ruby>豪華景品<rt>ごうかけいひん</rt></ruby>" }
-							}),
+							style: { color: "#6A3DE8" },
+							dangerouslySetInnerHTML: { __html: "<ruby>豪華景品<rt>ごうかけいひん</rt></ruby>" }
+						}),
 							"GET！"
 						]
 					}),
@@ -11794,7 +11793,7 @@
 						dangerouslySetInnerHTML: { __html: "📲 このページをシェア" }
 					}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QRPlaceholder, {}),
-					// The temporary text saying URL will be replaced later is removed.
+						// The temporary text saying URL will be replaced later is removed.
 					]
 				})
 				]
