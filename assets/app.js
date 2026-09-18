@@ -1,4 +1,4 @@
-(function() {
+(function () {
 	//#region \0rolldown/runtime.js
 	var __create = Object.create;
 	var __defProp = Object.defineProperty;
@@ -53,12 +53,12 @@
 			return "function" === typeof maybeIterable ? maybeIterable : null;
 		}
 		var ReactNoopUpdateQueue = {
-			isMounted: function() {
+			isMounted: function () {
 				return !1;
 			},
-			enqueueForceUpdate: function() {},
-			enqueueReplaceState: function() {},
-			enqueueSetState: function() {}
+			enqueueForceUpdate: function () { },
+			enqueueReplaceState: function () { },
+			enqueueSetState: function () { }
 		};
 		var assign = Object.assign;
 		var emptyObject = {};
@@ -69,14 +69,14 @@
 			this.updater = updater || ReactNoopUpdateQueue;
 		}
 		Component.prototype.isReactComponent = {};
-		Component.prototype.setState = function(partialState, callback) {
+		Component.prototype.setState = function (partialState, callback) {
 			if ("object" !== typeof partialState && "function" !== typeof partialState && null != partialState) throw Error("takes an object of state variables to update or a function which returns an object of state variables.");
 			this.updater.enqueueSetState(this, partialState, callback, "setState");
 		};
-		Component.prototype.forceUpdate = function(callback) {
+		Component.prototype.forceUpdate = function (callback) {
 			this.updater.enqueueForceUpdate(this, callback, "forceUpdate");
 		};
-		function ComponentDummy() {}
+		function ComponentDummy() { }
 		ComponentDummy.prototype = Component.prototype;
 		function PureComponent(props, context, updater) {
 			this.props = props;
@@ -89,7 +89,7 @@
 		assign(pureComponentPrototype, Component.prototype);
 		pureComponentPrototype.isPureReactComponent = !0;
 		var isArrayImpl = Array.isArray;
-		function noop() {}
+		function noop() { }
 		var ReactSharedInternals = {
 			H: null,
 			A: null,
@@ -118,7 +118,7 @@
 				"=": "=0",
 				":": "=2"
 			};
-			return "$" + key.replace(/[=:]/g, function(match) {
+			return "$" + key.replace(/[=:]/g, function (match) {
 				return escaperLookup[match];
 			});
 		}
@@ -130,14 +130,14 @@
 			switch (thenable.status) {
 				case "fulfilled": return thenable.value;
 				case "rejected": throw thenable.reason;
-				default: switch ("string" === typeof thenable.status ? thenable.then(noop, noop) : (thenable.status = "pending", thenable.then(function(fulfilledValue) {
+				default: switch ("string" === typeof thenable.status ? thenable.then(noop, noop) : (thenable.status = "pending", thenable.then(function (fulfilledValue) {
 					"pending" === thenable.status && (thenable.status = "fulfilled", thenable.value = fulfilledValue);
-				}, function(error) {
+				}, function (error) {
 					"pending" === thenable.status && (thenable.status = "rejected", thenable.reason = error);
 				})), thenable.status) {
-					case "fulfilled": return thenable.value;
-					case "rejected": throw thenable.reason;
-				}
+						case "fulfilled": return thenable.value;
+						case "rejected": throw thenable.reason;
+					}
 			}
 			throw thenable;
 		}
@@ -160,7 +160,7 @@
 					case REACT_LAZY_TYPE: return invokeCallback = children._init, mapIntoArray(invokeCallback(children._payload), array, escapedPrefix, nameSoFar, callback);
 				}
 			}
-			if (invokeCallback) return callback = callback(children), invokeCallback = "" === nameSoFar ? "." + getElementKey(children, 0) : nameSoFar, isArrayImpl(callback) ? (escapedPrefix = "", null != invokeCallback && (escapedPrefix = invokeCallback.replace(userProvidedKeyEscapeRegex, "$&/") + "/"), mapIntoArray(callback, array, escapedPrefix, "", function(c) {
+			if (invokeCallback) return callback = callback(children), invokeCallback = "" === nameSoFar ? "." + getElementKey(children, 0) : nameSoFar, isArrayImpl(callback) ? (escapedPrefix = "", null != invokeCallback && (escapedPrefix = invokeCallback.replace(userProvidedKeyEscapeRegex, "$&/") + "/"), mapIntoArray(callback, array, escapedPrefix, "", function (c) {
 				return c;
 			})) : null != callback && (isValidElement(callback) && (callback = cloneAndReplaceKey(callback, escapedPrefix + (null == callback.key || children && children.key === callback.key ? "" : ("" + callback.key).replace(userProvidedKeyEscapeRegex, "$&/") + "/") + invokeCallback)), array.push(callback)), 1;
 			invokeCallback = 0;
@@ -177,7 +177,7 @@
 		function mapChildren(children, func, context) {
 			if (null == children) return children;
 			var result = [], count = 0;
-			mapIntoArray(children, result, "", "", function(child) {
+			mapIntoArray(children, result, "", "", function (child) {
 				return func.call(context, child, count++);
 			});
 			return result;
@@ -185,9 +185,9 @@
 		function lazyInitializer(payload) {
 			if (-1 === payload._status) {
 				var ctor = payload._result, thenable = ctor();
-				thenable.then(function(moduleObject) {
+				thenable.then(function (moduleObject) {
 					if (0 === payload._status || -1 === payload._status) payload._status = 1, payload._result = moduleObject, void 0 === thenable.status && (thenable.status = "fulfilled", thenable.value = moduleObject);
-				}, function(error) {
+				}, function (error) {
 					if (0 === payload._status || -1 === payload._status) payload._status = 2, payload._result = error, void 0 === thenable.status && (thenable.status = "rejected", thenable.reason = error);
 				});
 				-1 === payload._status && (payload._status = 0, payload._result = thenable);
@@ -195,7 +195,7 @@
 			if (1 === payload._status) return payload._result.default;
 			throw payload._result;
 		}
-		var reportGlobalError = "function" === typeof reportError ? reportError : function(error) {
+		var reportGlobalError = "function" === typeof reportError ? reportError : function (error) {
 			if ("object" === typeof window && "function" === typeof window.ErrorEvent) {
 				var event = new window.ErrorEvent("error", {
 					bubbles: !0,
@@ -233,24 +233,24 @@
 		}
 		var Children = {
 			map: mapChildren,
-			forEach: function(children, forEachFunc, forEachContext) {
-				mapChildren(children, function() {
+			forEach: function (children, forEachFunc, forEachContext) {
+				mapChildren(children, function () {
 					forEachFunc.apply(this, arguments);
 				}, forEachContext);
 			},
-			count: function(children) {
+			count: function (children) {
 				var n = 0;
-				mapChildren(children, function() {
+				mapChildren(children, function () {
 					n++;
 				});
 				return n;
 			},
-			toArray: function(children) {
-				return mapChildren(children, function(child) {
+			toArray: function (children) {
+				return mapChildren(children, function (child) {
 					return child;
 				}) || [];
 			},
-			only: function(children) {
+			only: function (children) {
 				if (!isValidElement(children)) throw Error("React.Children.only expected to receive a single React element child.");
 				return children;
 			}
@@ -267,20 +267,20 @@
 		exports.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE = ReactSharedInternals;
 		exports.__COMPILER_RUNTIME = {
 			__proto__: null,
-			c: function(size) {
+			c: function (size) {
 				return ReactSharedInternals.H.useMemoCache(size);
 			}
 		};
 		exports.addTransitionType = addTransitionType;
-		exports.cache = function(fn) {
-			return function() {
+		exports.cache = function (fn) {
+			return function () {
 				return fn.apply(null, arguments);
 			};
 		};
-		exports.cacheSignal = function() {
+		exports.cacheSignal = function () {
 			return null;
 		};
-		exports.cloneElement = function(element, config, children) {
+		exports.cloneElement = function (element, config, children) {
 			if (null === element || void 0 === element) throw Error("The argument must be a React element, but you passed " + element + ".");
 			var props = assign({}, element.props), key = element.key;
 			if (null != config) for (propName in void 0 !== config.key && (key = "" + config.key), config) !hasOwnProperty.call(config, propName) || "key" === propName || "__self" === propName || "__source" === propName || "ref" === propName && void 0 === config.ref || (props[propName] = config[propName]);
@@ -292,7 +292,7 @@
 			}
 			return ReactElement(element.type, key, props);
 		};
-		exports.createContext = function(defaultValue) {
+		exports.createContext = function (defaultValue) {
 			defaultValue = {
 				$$typeof: REACT_CONTEXT_TYPE,
 				_currentValue: defaultValue,
@@ -308,7 +308,7 @@
 			};
 			return defaultValue;
 		};
-		exports.createElement = function(type, config, children) {
+		exports.createElement = function (type, config, children) {
 			var propName, props = {}, key = null;
 			if (null != config) for (propName in void 0 !== config.key && (key = "" + config.key), config) hasOwnProperty.call(config, propName) && "key" !== propName && "__self" !== propName && "__source" !== propName && (props[propName] = config[propName]);
 			var childrenLength = arguments.length - 2;
@@ -320,17 +320,17 @@
 			if (type && type.defaultProps) for (propName in childrenLength = type.defaultProps, childrenLength) void 0 === props[propName] && (props[propName] = childrenLength[propName]);
 			return ReactElement(type, key, props);
 		};
-		exports.createRef = function() {
+		exports.createRef = function () {
 			return { current: null };
 		};
-		exports.forwardRef = function(render) {
+		exports.forwardRef = function (render) {
 			return {
 				$$typeof: REACT_FORWARD_REF_TYPE,
 				render
 			};
 		};
 		exports.isValidElement = isValidElement;
-		exports.lazy = function(ctor) {
+		exports.lazy = function (ctor) {
 			return {
 				$$typeof: REACT_LAZY_TYPE,
 				_payload: {
@@ -340,7 +340,7 @@
 				_init: lazyInitializer
 			};
 		};
-		exports.memo = function(type, compare) {
+		exports.memo = function (type, compare) {
 			return {
 				$$typeof: REACT_MEMO_TYPE,
 				type,
@@ -348,62 +348,62 @@
 			};
 		};
 		exports.startTransition = startTransition;
-		exports.unstable_useCacheRefresh = function() {
+		exports.unstable_useCacheRefresh = function () {
 			return ReactSharedInternals.H.useCacheRefresh();
 		};
-		exports.use = function(usable) {
+		exports.use = function (usable) {
 			return ReactSharedInternals.H.use(usable);
 		};
-		exports.useActionState = function(action, initialState, permalink) {
+		exports.useActionState = function (action, initialState, permalink) {
 			return ReactSharedInternals.H.useActionState(action, initialState, permalink);
 		};
-		exports.useCallback = function(callback, deps) {
+		exports.useCallback = function (callback, deps) {
 			return ReactSharedInternals.H.useCallback(callback, deps);
 		};
-		exports.useContext = function(Context) {
+		exports.useContext = function (Context) {
 			return ReactSharedInternals.H.useContext(Context);
 		};
-		exports.useDebugValue = function() {};
-		exports.useDeferredValue = function(value, initialValue) {
+		exports.useDebugValue = function () { };
+		exports.useDeferredValue = function (value, initialValue) {
 			return ReactSharedInternals.H.useDeferredValue(value, initialValue);
 		};
-		exports.useEffect = function(create, deps) {
+		exports.useEffect = function (create, deps) {
 			return ReactSharedInternals.H.useEffect(create, deps);
 		};
-		exports.useEffectEvent = function(callback) {
+		exports.useEffectEvent = function (callback) {
 			return ReactSharedInternals.H.useEffectEvent(callback);
 		};
-		exports.useId = function() {
+		exports.useId = function () {
 			return ReactSharedInternals.H.useId();
 		};
-		exports.useImperativeHandle = function(ref, create, deps) {
+		exports.useImperativeHandle = function (ref, create, deps) {
 			return ReactSharedInternals.H.useImperativeHandle(ref, create, deps);
 		};
-		exports.useInsertionEffect = function(create, deps) {
+		exports.useInsertionEffect = function (create, deps) {
 			return ReactSharedInternals.H.useInsertionEffect(create, deps);
 		};
-		exports.useLayoutEffect = function(create, deps) {
+		exports.useLayoutEffect = function (create, deps) {
 			return ReactSharedInternals.H.useLayoutEffect(create, deps);
 		};
-		exports.useMemo = function(create, deps) {
+		exports.useMemo = function (create, deps) {
 			return ReactSharedInternals.H.useMemo(create, deps);
 		};
-		exports.useOptimistic = function(passthrough, reducer) {
+		exports.useOptimistic = function (passthrough, reducer) {
 			return ReactSharedInternals.H.useOptimistic(passthrough, reducer);
 		};
-		exports.useReducer = function(reducer, initialArg, init) {
+		exports.useReducer = function (reducer, initialArg, init) {
 			return ReactSharedInternals.H.useReducer(reducer, initialArg, init);
 		};
-		exports.useRef = function(initialValue) {
+		exports.useRef = function (initialValue) {
 			return ReactSharedInternals.H.useRef(initialValue);
 		};
-		exports.useState = function(initialState) {
+		exports.useState = function (initialState) {
 			return ReactSharedInternals.H.useState(initialState);
 		};
-		exports.useSyncExternalStore = function(subscribe, getSnapshot, getServerSnapshot) {
+		exports.useSyncExternalStore = function (subscribe, getSnapshot, getServerSnapshot) {
 			return ReactSharedInternals.H.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 		};
-		exports.useTransition = function() {
+		exports.useTransition = function () {
 			return ReactSharedInternals.H.useTransition();
 		};
 		exports.version = "19.3.0";
@@ -458,12 +458,12 @@
 		exports.unstable_now = void 0;
 		if ("object" === typeof performance && "function" === typeof performance.now) {
 			var localPerformance = performance;
-			exports.unstable_now = function() {
+			exports.unstable_now = function () {
 				return localPerformance.now();
 			};
 		} else {
 			var localDate = Date, initialTime = localDate.now();
-			exports.unstable_now = function() {
+			exports.unstable_now = function () {
 				return localDate.now() - initialTime;
 			};
 		}
@@ -555,20 +555,20 @@
 			}
 		}
 		var schedulePerformWorkUntilDeadline;
-		if ("function" === typeof localSetImmediate) schedulePerformWorkUntilDeadline = function() {
+		if ("function" === typeof localSetImmediate) schedulePerformWorkUntilDeadline = function () {
 			localSetImmediate(performWorkUntilDeadline);
 		};
 		else if ("undefined" !== typeof MessageChannel) {
 			var channel = new MessageChannel(), port = channel.port2;
 			channel.port1.onmessage = performWorkUntilDeadline;
-			schedulePerformWorkUntilDeadline = function() {
+			schedulePerformWorkUntilDeadline = function () {
 				port.postMessage(null);
 			};
-		} else schedulePerformWorkUntilDeadline = function() {
+		} else schedulePerformWorkUntilDeadline = function () {
 			localSetTimeout(performWorkUntilDeadline, 0);
 		};
 		function requestHostTimeout(callback, ms) {
-			taskTimeoutID = localSetTimeout(function() {
+			taskTimeoutID = localSetTimeout(function () {
 				callback(exports.unstable_now());
 			}, ms);
 		}
@@ -578,16 +578,16 @@
 		exports.unstable_NormalPriority = 3;
 		exports.unstable_Profiling = null;
 		exports.unstable_UserBlockingPriority = 2;
-		exports.unstable_cancelCallback = function(task) {
+		exports.unstable_cancelCallback = function (task) {
 			task.callback = null;
 		};
-		exports.unstable_forceFrameRate = function(fps) {
+		exports.unstable_forceFrameRate = function (fps) {
 			0 > fps || 125 < fps ? console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported") : frameInterval = 0 < fps ? Math.floor(1e3 / fps) : 5;
 		};
-		exports.unstable_getCurrentPriorityLevel = function() {
+		exports.unstable_getCurrentPriorityLevel = function () {
 			return currentPriorityLevel;
 		};
-		exports.unstable_next = function(eventHandler) {
+		exports.unstable_next = function (eventHandler) {
 			switch (currentPriorityLevel) {
 				case 1:
 				case 2:
@@ -604,10 +604,10 @@
 				currentPriorityLevel = previousPriorityLevel;
 			}
 		};
-		exports.unstable_requestPaint = function() {
+		exports.unstable_requestPaint = function () {
 			needsPaint = !0;
 		};
-		exports.unstable_runWithPriority = function(priorityLevel, eventHandler) {
+		exports.unstable_runWithPriority = function (priorityLevel, eventHandler) {
 			switch (priorityLevel) {
 				case 1:
 				case 2:
@@ -624,7 +624,7 @@
 				currentPriorityLevel = previousPriorityLevel;
 			}
 		};
-		exports.unstable_scheduleCallback = function(priorityLevel, callback, options) {
+		exports.unstable_scheduleCallback = function (priorityLevel, callback, options) {
 			var currentTime = exports.unstable_now();
 			"object" === typeof options && null !== options ? (options = options.delay, options = "number" === typeof options && 0 < options ? currentTime + options : currentTime) : options = currentTime;
 			switch (priorityLevel) {
@@ -655,9 +655,9 @@
 			return priorityLevel;
 		};
 		exports.unstable_shouldYield = shouldYieldToHost;
-		exports.unstable_wrapCallback = function(callback) {
+		exports.unstable_wrapCallback = function (callback) {
 			var parentPriorityLevel = currentPriorityLevel;
-			return function() {
+			return function () {
 				var previousPriorityLevel = currentPriorityLevel;
 				currentPriorityLevel = parentPriorityLevel;
 				try {
@@ -694,11 +694,11 @@
 			}
 			return "Minified React error #" + code + "; visit " + url + " for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";
 		}
-		function noop() {}
+		function noop() { }
 		var Internals = {
 			d: {
 				f: noop,
-				r: function() {
+				r: function () {
 					throw Error(formatProdErrorMessage(522));
 				},
 				D: noop,
@@ -731,18 +731,18 @@
 			if ("string" === typeof input) return "use-credentials" === input ? input : "";
 		}
 		exports.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE = Internals;
-		exports.browser = function(reason) {
+		exports.browser = function (reason) {
 			return {
 				$$typeof: REACT_RECOVERABLE_TYPE,
 				_reason: reason
 			};
 		};
-		exports.createPortal = function(children, container) {
+		exports.createPortal = function (children, container) {
 			var key = 2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : null;
 			if (!container || 1 !== container.nodeType && 9 !== container.nodeType && 11 !== container.nodeType) throw Error(formatProdErrorMessage(299));
 			return createPortal$1(children, container, null, key);
 		};
-		exports.flushSync = function(fn) {
+		exports.flushSync = function (fn) {
 			var previousTransition = ReactSharedInternals.T, previousUpdatePriority = Internals.p;
 			try {
 				if (ReactSharedInternals.T = null, Internals.p = 2, fn) return fn();
@@ -750,13 +750,13 @@
 				ReactSharedInternals.T = previousTransition, Internals.p = previousUpdatePriority, Internals.d.f();
 			}
 		};
-		exports.preconnect = function(href, options) {
+		exports.preconnect = function (href, options) {
 			"string" === typeof href && (options ? (options = options.crossOrigin, options = "string" === typeof options ? "use-credentials" === options ? options : "" : void 0) : options = null, Internals.d.C(href, options));
 		};
-		exports.prefetchDNS = function(href) {
+		exports.prefetchDNS = function (href) {
 			"string" === typeof href && Internals.d.D(href);
 		};
-		exports.preinit = function(href, options) {
+		exports.preinit = function (href, options) {
 			if ("string" === typeof href && options && "string" === typeof options.as) {
 				var as = options.as, crossOrigin = getCrossOriginStringAs(as, options.crossOrigin), integrity = "string" === typeof options.integrity ? options.integrity : void 0, fetchPriority = "string" === typeof options.fetchPriority ? options.fetchPriority : void 0;
 				"style" === as ? Internals.d.S(href, "string" === typeof options.precedence ? options.precedence : void 0, {
@@ -771,7 +771,7 @@
 				});
 			}
 		};
-		exports.preinitModule = function(href, options) {
+		exports.preinitModule = function (href, options) {
 			if ("string" === typeof href) if ("object" === typeof options && null !== options) {
 				if (null == options.as || "script" === options.as) {
 					var crossOrigin = getCrossOriginStringAs(options.as, options.crossOrigin);
@@ -784,7 +784,7 @@
 				}
 			} else null == options && Internals.d.M(href);
 		};
-		exports.preload = function(href, options) {
+		exports.preload = function (href, options) {
 			if ("string" === typeof href && "object" === typeof options && null !== options && "string" === typeof options.as) {
 				var as = options.as, crossOrigin = getCrossOriginStringAs(as, options.crossOrigin);
 				Internals.d.L(href, as, {
@@ -800,7 +800,7 @@
 				});
 			}
 		};
-		exports.preloadModule = function(href, options) {
+		exports.preloadModule = function (href, options) {
 			if ("string" === typeof href) if (options) {
 				var crossOrigin = getCrossOriginStringAs(options.as, options.crossOrigin);
 				Internals.d.m(href, {
@@ -812,16 +812,16 @@
 				});
 			} else Internals.d.m(href);
 		};
-		exports.requestFormReset = function(form) {
+		exports.requestFormReset = function (form) {
 			Internals.d.r(form);
 		};
-		exports.unstable_batchedUpdates = function(fn, a) {
+		exports.unstable_batchedUpdates = function (fn, a) {
 			return fn(a);
 		};
-		exports.useFormState = function(action, initialState, permalink) {
+		exports.useFormState = function (action, initialState, permalink) {
 			return ReactSharedInternals.H.useFormState(action, initialState, permalink);
 		};
-		exports.useFormStatus = function() {
+		exports.useFormStatus = function () {
 			return ReactSharedInternals.H.useHostTransitionStatus();
 		};
 		exports.version = "19.3.0";
@@ -897,7 +897,7 @@
 				if (null === alternate) throw Error(formatProdErrorMessage(188));
 				return alternate !== fiber ? null : fiber;
 			}
-			for (var a = fiber, b = alternate;;) {
+			for (var a = fiber, b = alternate; ;) {
 				var parentA = a.return;
 				if (null === parentA) break;
 				var parentB = parentA.alternate;
@@ -1099,7 +1099,7 @@
 					type = type._init;
 					try {
 						return getComponentNameFromType(type(innerType));
-					} catch (x) {}
+					} catch (x) { }
 			}
 			return null;
 		}
@@ -1187,56 +1187,60 @@
 			var previousPrepareStackTrace = Error.prepareStackTrace;
 			Error.prepareStackTrace = void 0;
 			try {
-				var RunInRootFrame = { DetermineComponentFrameRoot: function() {
-					try {
-						if (construct) {
-							var Fake = function() {
-								throw Error();
-							};
-							Object.defineProperty(Fake.prototype, "props", { set: function() {
-								throw Error();
-							} });
-							if ("object" === typeof Reflect && Reflect.construct) {
-								try {
-									Reflect.construct(Fake, []);
-								} catch (x) {
-									var control = x;
+				var RunInRootFrame = {
+					DetermineComponentFrameRoot: function () {
+						try {
+							if (construct) {
+								var Fake = function () {
+									throw Error();
+								};
+								Object.defineProperty(Fake.prototype, "props", {
+									set: function () {
+										throw Error();
+									}
+								});
+								if ("object" === typeof Reflect && Reflect.construct) {
+									try {
+										Reflect.construct(Fake, []);
+									} catch (x) {
+										var control = x;
+									}
+									Reflect.construct(fn, [], Fake);
+								} else {
+									try {
+										Fake.call();
+									} catch (x$1) {
+										control = x$1;
+									}
+									Fake = !1;
+									try {
+										var prevProps = Object.getOwnPropertyDescriptor(fn.prototype, "props");
+										Object.defineProperty(fn.prototype, "props", {
+											configurable: !0,
+											set: function () {
+												throw Error();
+											}
+										});
+										Fake = !0;
+										new fn();
+									} finally {
+										Fake && (void 0 !== prevProps ? Object.defineProperty(fn.prototype, "props", prevProps) : delete fn.prototype.props);
+									}
 								}
-								Reflect.construct(fn, [], Fake);
 							} else {
 								try {
-									Fake.call();
-								} catch (x$1) {
-									control = x$1;
+									throw Error();
+								} catch (x$2) {
+									control = x$2;
 								}
-								Fake = !1;
-								try {
-									var prevProps = Object.getOwnPropertyDescriptor(fn.prototype, "props");
-									Object.defineProperty(fn.prototype, "props", {
-										configurable: !0,
-										set: function() {
-											throw Error();
-										}
-									});
-									Fake = !0;
-									new fn();
-								} finally {
-									Fake && (void 0 !== prevProps ? Object.defineProperty(fn.prototype, "props", prevProps) : delete fn.prototype.props);
-								}
+								(Fake = fn()) && "function" === typeof Fake.catch && Fake.catch(function () { });
 							}
-						} else {
-							try {
-								throw Error();
-							} catch (x$2) {
-								control = x$2;
-							}
-							(Fake = fn()) && "function" === typeof Fake.catch && Fake.catch(function() {});
+						} catch (sample) {
+							if (sample && control && "string" === typeof sample.stack) return [sample.stack, control.stack];
 						}
-					} catch (sample) {
-						if (sample && control && "string" === typeof sample.stack) return [sample.stack, control.stack];
+						return [null, null];
 					}
-					return [null, null];
-				} };
+				};
 				RunInRootFrame.DetermineComponentFrameRoot.displayName = "DetermineComponentFrameRoot";
 				var namePropDescriptor = Object.getOwnPropertyDescriptor(RunInRootFrame.DetermineComponentFrameRoot, "name");
 				namePropDescriptor && namePropDescriptor.configurable && Object.defineProperty(RunInRootFrame.DetermineComponentFrameRoot, "name", { value: "DetermineComponentFrameRoot" });
@@ -1310,7 +1314,7 @@
 			"function" === typeof log$1 && unstable_setDisableYieldValue(newIsStrictMode);
 			if (injectedHook && "function" === typeof injectedHook.setStrictMode) try {
 				injectedHook.setStrictMode(rendererID, newIsStrictMode);
-			} catch (err) {}
+			} catch (err) { }
 		}
 		var clz32 = Math.clz32 ? Math.clz32 : clz32Fallback;
 		var log = Math.log;
@@ -1686,23 +1690,23 @@
 				var get = descriptor.get, set = descriptor.set;
 				Object.defineProperty(node, valueField, {
 					configurable: !0,
-					get: function() {
+					get: function () {
 						return get.call(this);
 					},
-					set: function(value) {
+					set: function (value) {
 						currentValue = "" + value;
 						set.call(this, value);
 					}
 				});
 				Object.defineProperty(node, valueField, { enumerable: descriptor.enumerable });
 				return {
-					getValue: function() {
+					getValue: function () {
 						return currentValue;
 					},
-					setValue: function(value) {
+					setValue: function (value) {
 						currentValue = "" + value;
 					},
-					stopTracking: function() {
+					stopTracking: function () {
 						node._valueTracker = null;
 						delete node[valueField];
 					}
@@ -1727,7 +1731,7 @@
 		}
 		var escapeSelectorAttributeValueInsideDoubleQuotesRegex = /[\n"\\]/g;
 		function escapeSelectorAttributeValueInsideDoubleQuotes(value) {
-			return value.replace(escapeSelectorAttributeValueInsideDoubleQuotesRegex, function(ch) {
+			return value.replace(escapeSelectorAttributeValueInsideDoubleQuotesRegex, function (ch) {
 				return "\\" + ch.charCodeAt(0).toString(16) + " ";
 			});
 		}
@@ -1933,7 +1937,7 @@
 		function sanitizeURL(url) {
 			return isJavaScriptProtocol.test("" + url) ? "javascript:throw new Error('React has blocked a javascript: URL as a security precaution.')" : url;
 		}
-		function noop$1() {}
+		function noop$1() { }
 		var currentReplayingEvent = null;
 		function getEventTarget(nativeEvent) {
 			nativeEvent = nativeEvent.target || nativeEvent.srcElement || window;
@@ -2014,9 +2018,11 @@
 		var passiveBrowserEventsSupported = !1;
 		if (canUseDOM) try {
 			var options = {};
-			Object.defineProperty(options, "passive", { get: function() {
-				passiveBrowserEventsSupported = !0;
-			} });
+			Object.defineProperty(options, "passive", {
+				get: function () {
+					passiveBrowserEventsSupported = !0;
+				}
+			});
 			window.addEventListener("test", options, options);
 			window.removeEventListener("test", options, options);
 		} catch (e) {
@@ -2059,16 +2065,16 @@
 				return this;
 			}
 			assign(SyntheticBaseEvent.prototype, {
-				preventDefault: function() {
+				preventDefault: function () {
 					this.defaultPrevented = !0;
 					var event = this.nativeEvent;
 					event && (event.preventDefault ? event.preventDefault() : "unknown" !== typeof event.returnValue && (event.returnValue = !1), this.isDefaultPrevented = functionThatReturnsTrue);
 				},
-				stopPropagation: function() {
+				stopPropagation: function () {
 					var event = this.nativeEvent;
 					event && (event.stopPropagation ? event.stopPropagation() : "unknown" !== typeof event.cancelBubble && (event.cancelBubble = !0), this.isPropagationStopped = functionThatReturnsTrue);
 				},
-				persist: function() {},
+				persist: function () { },
 				isPersistent: functionThatReturnsTrue
 			});
 			return SyntheticBaseEvent;
@@ -2077,7 +2083,7 @@
 			eventPhase: 0,
 			bubbles: 0,
 			cancelable: 0,
-			timeStamp: function(event) {
+			timeStamp: function (event) {
 				return event.timeStamp || Date.now();
 			},
 			defaultPrevented: 0,
@@ -2106,15 +2112,15 @@
 			getModifierState: getEventModifierState,
 			button: 0,
 			buttons: 0,
-			relatedTarget: function(event) {
+			relatedTarget: function (event) {
 				return void 0 === event.relatedTarget ? event.fromElement === event.srcElement ? event.toElement : event.fromElement : event.relatedTarget;
 			},
-			movementX: function(event) {
+			movementX: function (event) {
 				if ("movementX" in event) return event.movementX;
 				event !== lastMouseEvent && (lastMouseEvent && "mousemove" === event.type ? (lastMovementX = event.screenX - lastMouseEvent.screenX, lastMovementY = event.screenY - lastMouseEvent.screenY) : lastMovementY = lastMovementX = 0, lastMouseEvent = event);
 				return lastMovementX;
 			},
-			movementY: function(event) {
+			movementY: function (event) {
 				return "movementY" in event ? event.movementY : lastMovementY;
 			}
 		});
@@ -2126,9 +2132,11 @@
 			elapsedTime: 0,
 			pseudoElement: 0
 		}));
-		var SyntheticClipboardEvent = createSyntheticEvent(assign({}, EventInterface, { clipboardData: function(event) {
-			return "clipboardData" in event ? event.clipboardData : window.clipboardData;
-		} }));
+		var SyntheticClipboardEvent = createSyntheticEvent(assign({}, EventInterface, {
+			clipboardData: function (event) {
+				return "clipboardData" in event ? event.clipboardData : window.clipboardData;
+			}
+		}));
 		var SyntheticCompositionEvent = createSyntheticEvent(assign({}, EventInterface, { data: 0 }));
 		var normalizeKey = {
 			Esc: "Escape",
@@ -2196,7 +2204,7 @@
 			return modifierStateGetter;
 		}
 		var SyntheticKeyboardEvent = createSyntheticEvent(assign({}, UIEventInterface, {
-			key: function(nativeEvent) {
+			key: function (nativeEvent) {
 				if (nativeEvent.key) {
 					var key = normalizeKey[nativeEvent.key] || nativeEvent.key;
 					if ("Unidentified" !== key) return key;
@@ -2212,13 +2220,13 @@
 			repeat: 0,
 			locale: 0,
 			getModifierState: getEventModifierState,
-			charCode: function(event) {
+			charCode: function (event) {
 				return "keypress" === event.type ? getEventCharCode(event) : 0;
 			},
-			keyCode: function(event) {
+			keyCode: function (event) {
 				return "keydown" === event.type || "keyup" === event.type ? event.keyCode : 0;
 			},
-			which: function(event) {
+			which: function (event) {
 				return "keypress" === event.type ? getEventCharCode(event) : "keydown" === event.type || "keyup" === event.type ? event.keyCode : 0;
 			}
 		}));
@@ -2251,10 +2259,10 @@
 			pseudoElement: 0
 		}));
 		var SyntheticWheelEvent = createSyntheticEvent(assign({}, MouseEventInterface, {
-			deltaX: function(event) {
+			deltaX: function (event) {
 				return "deltaX" in event ? event.deltaX : "wheelDeltaX" in event ? -event.wheelDeltaX : 0;
 			},
-			deltaY: function(event) {
+			deltaY: function (event) {
 				return "deltaY" in event ? event.deltaY : "wheelDeltaY" in event ? -event.wheelDeltaY : "wheelDelta" in event ? -event.wheelDelta : 0;
 			},
 			deltaZ: 0,
@@ -2554,7 +2562,7 @@
 			eventClass = getClassNameByType(eventClass);
 			return null == eventClass ? "auto" === defaultClass ? null : defaultClass : "auto" === eventClass ? null : eventClass;
 		}
-		var reportGlobalError = "function" === typeof reportError ? reportError : function(error) {
+		var reportGlobalError = "function" === typeof reportError ? reportError : function (error) {
 			if ("object" === typeof window && "function" === typeof window.ErrorEvent) {
 				var event = new window.ErrorEvent("error", {
 					bubbles: !0,
@@ -3049,16 +3057,16 @@
 			} else lastContextDependency = lastContextDependency.next = context;
 			return value;
 		}
-		var AbortControllerLocal = "undefined" !== typeof AbortController ? AbortController : function() {
+		var AbortControllerLocal = "undefined" !== typeof AbortController ? AbortController : function () {
 			var listeners = [], signal = this.signal = {
 				aborted: !1,
-				addEventListener: function(type, listener) {
+				addEventListener: function (type, listener) {
 					listeners.push(listener);
 				}
 			};
-			this.abort = function() {
+			this.abort = function () {
 				signal.aborted = !0;
-				listeners.forEach(function(listener) {
+				listeners.forEach(function (listener) {
 					return listener();
 				});
 			};
@@ -3082,7 +3090,7 @@
 		}
 		function releaseCache(cache) {
 			cache.refCount--;
-			0 === cache.refCount && scheduleCallback$2(NormalPriority, function() {
+			0 === cache.refCount && scheduleCallback$2(NormalPriority, function () {
 				cache.controller.abort();
 			});
 		}
@@ -3114,7 +3122,7 @@
 				currentEntangledActionThenable = {
 					status: "pending",
 					value: void 0,
-					then: function(resolve) {
+					then: function (resolve) {
 						entangledListeners.push(resolve);
 					}
 				};
@@ -3138,15 +3146,15 @@
 				status: "pending",
 				value: null,
 				reason: null,
-				then: function(resolve) {
+				then: function (resolve) {
 					listeners.push(resolve);
 				}
 			};
-			thenable.then(function() {
+			thenable.then(function () {
 				thenableWithOverride.status = "fulfilled";
 				thenableWithOverride.value = result;
 				for (var i = 0; i < listeners.length; i++) (0, listeners[i])(result);
-			}, function(error) {
+			}, function (error) {
 				thenableWithOverride.status = "rejected";
 				thenableWithOverride.reason = error;
 				for (error = 0; error < listeners.length; error++) (0, listeners[error])(void 0);
@@ -3154,7 +3162,7 @@
 			return thenableWithOverride;
 		}
 		var prevOnStartTransitionFinish = ReactSharedInternals.S;
-		ReactSharedInternals.S = function(transition, returnValue) {
+		ReactSharedInternals.S = function (transition, returnValue) {
 			globalMostRecentTransitionTime = now();
 			"object" === typeof returnValue && null !== returnValue && "function" === typeof returnValue.then && entangleAsyncAction(transition, returnValue);
 			if (null !== entangledTransitionTypes) for (var root$28 = firstScheduledRoot; null !== root$28;) queueTransitionTypes(root$28, entangledTransitionTypes), root$28 = root$28.next;
@@ -3190,7 +3198,7 @@
 		var SuspenseException = Error(formatProdErrorMessage(460));
 		var SuspenseyCommitException = Error(formatProdErrorMessage(474));
 		var SuspenseActionException = Error(formatProdErrorMessage(542));
-		var noopSuspenseyCommitThenable = { then: function() {} };
+		var noopSuspenseyCommitThenable = { then: function () { } };
 		function isThenableResolved(thenable) {
 			thenable = thenable.status;
 			return "fulfilled" === thenable || "rejected" === thenable;
@@ -3212,13 +3220,13 @@
 						if (null !== thenableState && 100 < thenableState.shellSuspendCounter) throw Error(formatProdErrorMessage(482));
 						thenableState = thenable;
 						thenableState.status = "pending";
-						thenableState.then(function(fulfilledValue) {
+						thenableState.then(function (fulfilledValue) {
 							if ("pending" === thenable.status) {
 								var fulfilledThenable = thenable;
 								fulfilledThenable.status = "fulfilled";
 								fulfilledThenable.value = fulfilledValue;
 							}
-						}, function(error) {
+						}, function (error) {
 							if ("pending" === thenable.status) {
 								var rejectedThenable = thenable;
 								rejectedThenable.status = "rejected";
@@ -3398,7 +3406,7 @@
 					return resultingFirstChild;
 				}
 				for (oldFiber = mapRemainingChildren(oldFiber); newIdx < newChildren.length; newIdx++) nextOldFiber = updateFromMap(oldFiber, returnFiber, newIdx, newChildren[newIdx], lanes), null !== nextOldFiber && (shouldTrackSideEffects && (newFiber = nextOldFiber.alternate, null !== newFiber && oldFiber.delete(null === newFiber.key ? newIdx : newFiber.key)), currentFirstChild = placeChild(nextOldFiber, currentFirstChild, newIdx), null === previousNewFiber ? resultingFirstChild = nextOldFiber : previousNewFiber.sibling = nextOldFiber, previousNewFiber = nextOldFiber);
-				shouldTrackSideEffects && oldFiber.forEach(function(child) {
+				shouldTrackSideEffects && oldFiber.forEach(function (child) {
 					return deleteChild(returnFiber, child);
 				});
 				isHydrating && pushTreeFork(returnFiber, newIdx);
@@ -3426,7 +3434,7 @@
 					return resultingFirstChild;
 				}
 				for (oldFiber = mapRemainingChildren(oldFiber); !step.done; newIdx++, step = newChildren.next()) step = updateFromMap(oldFiber, returnFiber, newIdx, step.value, lanes), null !== step && (shouldTrackSideEffects && (nextOldFiber = step.alternate, null !== nextOldFiber && oldFiber.delete(null === nextOldFiber.key ? newIdx : nextOldFiber.key)), currentFirstChild = placeChild(step, currentFirstChild, newIdx), null === previousNewFiber ? resultingFirstChild = step : previousNewFiber.sibling = step, previousNewFiber = step);
-				shouldTrackSideEffects && oldFiber.forEach(function(child) {
+				shouldTrackSideEffects && oldFiber.forEach(function (child) {
 					return deleteChild(returnFiber, child);
 				});
 				isHydrating && pushTreeFork(returnFiber, newIdx);
@@ -3502,7 +3510,7 @@
 				}
 				return "string" === typeof newChild && "" !== newChild || "number" === typeof newChild || "bigint" === typeof newChild ? (newChild = "" + newChild, null !== currentFirstChild && 6 === currentFirstChild.tag ? (deleteRemainingChildren(returnFiber, currentFirstChild.sibling), lanes = useFiber(currentFirstChild, newChild), lanes.return = returnFiber, returnFiber = lanes) : (deleteRemainingChildren(returnFiber, currentFirstChild), lanes = createFiberFromText(newChild, returnFiber.mode, lanes), lanes.return = returnFiber, returnFiber = lanes), placeSingleChild(returnFiber)) : deleteRemainingChildren(returnFiber, currentFirstChild);
 			}
-			return function(returnFiber, currentFirstChild, newChild, lanes) {
+			return function (returnFiber, currentFirstChild, newChild, lanes) {
 				try {
 					thenableIndexCounter$1 = 0;
 					var firstChildFiber = reconcileChildFibersImpl(returnFiber, currentFirstChild, newChild, lanes);
@@ -3939,7 +3947,7 @@
 			if (null == memoCache) {
 				var current = currentlyRenderingFiber.alternate;
 				null !== current && (current = current.updateQueue, null !== current && (current = current.memoCache, null != current && (memoCache = {
-					data: current.data.map(function(array) {
+					data: current.data.map(function (array) {
 						return array.slice();
 					}),
 					index: 0
@@ -4083,7 +4091,7 @@
 			checkIfSnapshotChanged(inst) && forceStoreRerender(fiber);
 		}
 		function subscribeToStore(fiber, inst, subscribe) {
-			return subscribe(function() {
+			return subscribe(function () {
 				checkIfSnapshotChanged(inst) && forceStoreRerender(fiber);
 			});
 		}
@@ -4142,7 +4150,7 @@
 					value: null,
 					reason: null,
 					listeners: [],
-					then: function(listener) {
+					then: function (listener) {
 						actionNode.listeners.push(listener);
 					}
 				};
@@ -4174,9 +4182,9 @@
 			}
 		}
 		function handleActionReturnValue(actionQueue, node, returnValue) {
-			null !== returnValue && "object" === typeof returnValue && "function" === typeof returnValue.then ? returnValue.then(function(nextState) {
+			null !== returnValue && "object" === typeof returnValue && "function" === typeof returnValue.then ? returnValue.then(function (nextState) {
 				onActionSuccess(actionQueue, node, nextState);
-			}, function(error) {
+			}, function (error) {
 				return onActionError(actionQueue, node, error);
 			}) : onActionSuccess(actionQueue, node, returnValue);
 		}
@@ -4362,7 +4370,7 @@
 				ref,
 				nextImpl: callback
 			});
-			return function() {
+			return function () {
 				if (0 !== (executionContext & 2)) throw Error(formatProdErrorMessage(440));
 				return ref.impl.apply(void 0, arguments);
 			};
@@ -4377,11 +4385,11 @@
 			if ("function" === typeof ref) {
 				create = create();
 				var refCleanup = ref(create);
-				return function() {
+				return function () {
 					"function" === typeof refCleanup ? refCleanup() : ref(null);
 				};
 			}
-			if (null !== ref && void 0 !== ref) return create = create(), ref.current = create, function() {
+			if (null !== ref && void 0 !== ref) return create = create(), ref.current = create, function () {
 				ref.current = null;
 			};
 		}
@@ -4389,7 +4397,7 @@
 			deps = null !== deps && void 0 !== deps ? deps.concat([ref]) : null;
 			updateEffectImpl(4, 4, imperativeHandleEffect.bind(null, create, ref), deps);
 		}
-		function mountDebugValue() {}
+		function mountDebugValue() { }
 		function updateCallback(callback, deps) {
 			var hook = updateWorkInProgressHook();
 			deps = void 0 === deps ? null : deps;
@@ -4446,7 +4454,7 @@
 				else dispatchSetStateInternal(fiber, queue, finishedState, requestUpdateLane(fiber));
 			} catch (error) {
 				dispatchSetStateInternal(fiber, queue, {
-					then: function() {},
+					then: function () { },
 					status: "rejected",
 					reason: error
 				}, requestUpdateLane());
@@ -4454,11 +4462,11 @@
 				ReactDOMSharedInternals.p = previousPriority, null !== prevTransition && null !== currentTransition.types && (prevTransition.types = currentTransition.types), ReactSharedInternals.T = prevTransition;
 			}
 		}
-		function noop() {}
+		function noop() { }
 		function startHostTransition(formFiber, pendingState, action, formData) {
 			if (5 !== formFiber.tag) throw Error(formatProdErrorMessage(476));
 			var queue = ensureFormComponentIsStateful(formFiber).queue;
-			startTransition(formFiber, queue, pendingState, sharedNotPendingObject, null === action ? noop : function() {
+			startTransition(formFiber, queue, pendingState, sharedNotPendingObject, null === action ? noop : function () {
 				requestFormReset$1(formFiber);
 				return action(formData);
 			});
@@ -4562,7 +4570,7 @@
 					update.hasEagerState = !0;
 					update.eagerState = eagerState;
 					if (objectIs(eagerState, currentState)) return enqueueUpdate$1(fiber, queue, update, 0), null === workInProgressRoot && finishQueueingConcurrentUpdates(), !1;
-				} catch (error) {}
+				} catch (error) { }
 				action = enqueueConcurrentHookUpdate(fiber, queue, update, lane);
 				if (null !== action) return scheduleUpdateOnFiber(action, fiber, lane), entangleTransitionUpdate(action, queue, lane), !0;
 			}
@@ -4630,23 +4638,23 @@
 		var HooksDispatcherOnMount = {
 			readContext,
 			use,
-			useCallback: function(callback, deps) {
+			useCallback: function (callback, deps) {
 				mountWorkInProgressHook().memoizedState = [callback, void 0 === deps ? null : deps];
 				return callback;
 			},
 			useContext: readContext,
 			useEffect: mountEffect,
-			useImperativeHandle: function(ref, create, deps) {
+			useImperativeHandle: function (ref, create, deps) {
 				deps = null !== deps && void 0 !== deps ? deps.concat([ref]) : null;
 				mountEffectImpl(4194308, 4, imperativeHandleEffect.bind(null, create, ref), deps);
 			},
-			useLayoutEffect: function(create, deps) {
+			useLayoutEffect: function (create, deps) {
 				return mountEffectImpl(4194308, 4, create, deps);
 			},
-			useInsertionEffect: function(create, deps) {
+			useInsertionEffect: function (create, deps) {
 				mountEffectImpl(4, 2, create, deps);
 			},
-			useMemo: function(nextCreate, deps) {
+			useMemo: function (nextCreate, deps) {
 				var hook = mountWorkInProgressHook();
 				deps = void 0 === deps ? null : deps;
 				var nextValue = nextCreate();
@@ -4661,7 +4669,7 @@
 				hook.memoizedState = [nextValue, deps];
 				return nextValue;
 			},
-			useReducer: function(reducer, initialArg, init) {
+			useReducer: function (reducer, initialArg, init) {
 				var hook = mountWorkInProgressHook();
 				if (void 0 !== init) {
 					var initialState = init(initialArg);
@@ -4686,28 +4694,28 @@
 				reducer = reducer.dispatch = dispatchReducerAction.bind(null, currentlyRenderingFiber, reducer);
 				return [hook.memoizedState, reducer];
 			},
-			useRef: function(initialValue) {
+			useRef: function (initialValue) {
 				var hook = mountWorkInProgressHook();
 				initialValue = { current: initialValue };
 				return hook.memoizedState = initialValue;
 			},
-			useState: function(initialState) {
+			useState: function (initialState) {
 				initialState = mountStateImpl(initialState);
 				var queue = initialState.queue, dispatch = dispatchSetState.bind(null, currentlyRenderingFiber, queue);
 				queue.dispatch = dispatch;
 				return [initialState.memoizedState, dispatch];
 			},
 			useDebugValue: mountDebugValue,
-			useDeferredValue: function(value, initialValue) {
+			useDeferredValue: function (value, initialValue) {
 				return mountDeferredValueImpl(mountWorkInProgressHook(), value, initialValue);
 			},
-			useTransition: function() {
+			useTransition: function () {
 				var stateHook = mountStateImpl(!1);
 				stateHook = startTransition.bind(null, currentlyRenderingFiber, stateHook.queue, !0, !1);
 				mountWorkInProgressHook().memoizedState = stateHook;
 				return [!1, stateHook];
 			},
-			useSyncExternalStore: function(subscribe, getSnapshot, getServerSnapshot) {
+			useSyncExternalStore: function (subscribe, getSnapshot, getServerSnapshot) {
 				var fiber = currentlyRenderingFiber, hook = mountWorkInProgressHook();
 				if (isHydrating) {
 					if (void 0 === getServerSnapshot) throw Error(formatProdErrorMessage(407));
@@ -4728,7 +4736,7 @@
 				pushSimpleEffect(9, { destroy: void 0 }, updateStoreInstance.bind(null, fiber, inst, getServerSnapshot, getSnapshot), null);
 				return getServerSnapshot;
 			},
-			useId: function() {
+			useId: function () {
 				var hook = mountWorkInProgressHook(), identifierPrefix = workInProgressRoot.identifierPrefix;
 				if (isHydrating) {
 					var JSCompiler_inline_result = treeContextOverflow;
@@ -4744,7 +4752,7 @@
 			useHostTransitionStatus,
 			useFormState: mountActionState,
 			useActionState: mountActionState,
-			useOptimistic: function(passthrough) {
+			useOptimistic: function (passthrough) {
 				var hook = mountWorkInProgressHook();
 				hook.memoizedState = hook.baseState = passthrough;
 				var queue = {
@@ -4760,13 +4768,13 @@
 				return [passthrough, hook];
 			},
 			useMemoCache,
-			useCacheRefresh: function() {
+			useCacheRefresh: function () {
 				return mountWorkInProgressHook().memoizedState = refreshCache.bind(null, currentlyRenderingFiber);
 			},
-			useEffectEvent: function(callback) {
+			useEffectEvent: function (callback) {
 				var hook = mountWorkInProgressHook(), ref = { impl: callback };
 				hook.memoizedState = ref;
-				return function() {
+				return function () {
 					if (0 !== (executionContext & 2)) throw Error(formatProdErrorMessage(440));
 					return ref.impl.apply(void 0, arguments);
 				};
@@ -4784,14 +4792,14 @@
 			useMemo: updateMemo,
 			useReducer: updateReducer,
 			useRef: updateRef,
-			useState: function() {
+			useState: function () {
 				return updateReducer(basicStateReducer);
 			},
 			useDebugValue: mountDebugValue,
-			useDeferredValue: function(value, initialValue) {
+			useDeferredValue: function (value, initialValue) {
 				return updateDeferredValueImpl(updateWorkInProgressHook(), currentHook.memoizedState, value, initialValue);
 			},
-			useTransition: function() {
+			useTransition: function () {
 				var booleanOrThenable = updateReducer(basicStateReducer)[0], start = updateWorkInProgressHook().memoizedState;
 				return ["boolean" === typeof booleanOrThenable ? booleanOrThenable : useThenable(booleanOrThenable), start];
 			},
@@ -4800,7 +4808,7 @@
 			useHostTransitionStatus,
 			useFormState: updateActionState,
 			useActionState: updateActionState,
-			useOptimistic: function(passthrough, reducer) {
+			useOptimistic: function (passthrough, reducer) {
 				return updateOptimisticImpl(updateWorkInProgressHook(), currentHook, passthrough, reducer);
 			},
 			useMemoCache,
@@ -4819,15 +4827,15 @@
 			useMemo: updateMemo,
 			useReducer: rerenderReducer,
 			useRef: updateRef,
-			useState: function() {
+			useState: function () {
 				return rerenderReducer(basicStateReducer);
 			},
 			useDebugValue: mountDebugValue,
-			useDeferredValue: function(value, initialValue) {
+			useDeferredValue: function (value, initialValue) {
 				var hook = updateWorkInProgressHook();
 				return null === currentHook ? mountDeferredValueImpl(hook, value, initialValue) : updateDeferredValueImpl(hook, currentHook.memoizedState, value, initialValue);
 			},
-			useTransition: function() {
+			useTransition: function () {
 				var booleanOrThenable = rerenderReducer(basicStateReducer)[0], start = updateWorkInProgressHook().memoizedState;
 				return ["boolean" === typeof booleanOrThenable ? booleanOrThenable : useThenable(booleanOrThenable), start];
 			},
@@ -4836,7 +4844,7 @@
 			useHostTransitionStatus,
 			useFormState: rerenderActionState,
 			useActionState: rerenderActionState,
-			useOptimistic: function(passthrough, reducer) {
+			useOptimistic: function (passthrough, reducer) {
 				var hook = updateWorkInProgressHook();
 				if (null !== currentHook) return updateOptimisticImpl(hook, currentHook, passthrough, reducer);
 				hook.baseState = passthrough;
@@ -4854,7 +4862,7 @@
 			0 === workInProgress.lanes && (workInProgress.updateQueue.baseState = getDerivedStateFromProps);
 		}
 		var classComponentUpdater = {
-			enqueueSetState: function(inst, payload, callback) {
+			enqueueSetState: function (inst, payload, callback) {
 				inst = inst._reactInternals;
 				var lane = requestUpdateLane(), update = createUpdate(lane);
 				update.payload = payload;
@@ -4862,7 +4870,7 @@
 				payload = enqueueUpdate(inst, update, lane);
 				null !== payload && (scheduleUpdateOnFiber(payload, inst, lane), entangleTransitions(payload, inst, lane));
 			},
-			enqueueReplaceState: function(inst, payload, callback) {
+			enqueueReplaceState: function (inst, payload, callback) {
 				inst = inst._reactInternals;
 				var lane = requestUpdateLane(), update = createUpdate(lane);
 				update.tag = 1;
@@ -4871,7 +4879,7 @@
 				payload = enqueueUpdate(inst, update, lane);
 				null !== payload && (scheduleUpdateOnFiber(payload, inst, lane), entangleTransitions(payload, inst, lane));
 			},
-			enqueueForceUpdate: function(inst, callback) {
+			enqueueForceUpdate: function (inst, callback) {
 				inst = inst._reactInternals;
 				var lane = requestUpdateLane(), update = createUpdate(lane);
 				update.tag = 2;
@@ -4916,7 +4924,7 @@
 				var onUncaughtError = root.onUncaughtError;
 				onUncaughtError(errorInfo.value, { componentStack: errorInfo.stack });
 			} catch (e$78) {
-				setTimeout(function() {
+				setTimeout(function () {
 					throw e$78;
 				});
 			}
@@ -4929,7 +4937,7 @@
 					errorBoundary: 1 === boundary.tag ? boundary.stateNode : null
 				});
 			} catch (e$79) {
-				setTimeout(function() {
+				setTimeout(function () {
 					throw e$79;
 				});
 			}
@@ -4938,7 +4946,7 @@
 			lane = createUpdate(lane);
 			lane.tag = 3;
 			lane.payload = { element: null };
-			lane.callback = function() {
+			lane.callback = function () {
 				logUncaughtError(root, errorInfo);
 			};
 			return lane;
@@ -4952,15 +4960,15 @@
 			var getDerivedStateFromError = fiber.type.getDerivedStateFromError;
 			if ("function" === typeof getDerivedStateFromError) {
 				var error = errorInfo.value;
-				update.payload = function() {
+				update.payload = function () {
 					return getDerivedStateFromError(error);
 				};
-				update.callback = function() {
+				update.callback = function () {
 					logCaughtError(root, fiber, errorInfo);
 				};
 			}
 			var inst = fiber.stateNode;
-			null !== inst && "function" === typeof inst.componentDidCatch && (update.callback = function() {
+			null !== inst && "function" === typeof inst.componentDidCatch && (update.callback = function () {
 				logCaughtError(root, fiber, errorInfo);
 				"function" !== typeof getDerivedStateFromError && (null === legacyErrorBoundariesThatAlreadyFailed ? legacyErrorBoundariesThatAlreadyFailed = /* @__PURE__ */ new Set([this]) : legacyErrorBoundariesThatAlreadyFailed.add(this));
 				var stack = errorInfo.stack;
@@ -6308,7 +6316,7 @@
 			return 5 === fiber.tag || 3 === fiber.tag || 26 === fiber.tag || 27 === fiber.tag && isSingletonScope(fiber.type) || 4 === fiber.tag;
 		}
 		function getHostSibling(fiber) {
-			a: for (;;) {
+			a: for (; ;) {
 				for (; null === fiber.sibling;) {
 					if (null === fiber.return || isHostParent(fiber.return)) return null;
 					fiber = fiber.return;
@@ -6543,8 +6551,8 @@
 							break a;
 						}
 						var length = 0, start = -1, end = -1, indexWithinAnchor = 0, indexWithinFocus = 0, node = root, parentNode = null;
-						b: for (;;) {
-							for (var next;;) {
+						b: for (; ;) {
+							for (var next; ;) {
 								node !== JSCompiler_temp || 0 !== anchorOffset && 3 !== node.nodeType || (start = length + anchorOffset);
 								node !== focusNode || 0 !== selection && 3 !== node.nodeType || (end = length + selection);
 								3 === node.nodeType && (length += node.nodeValue.length);
@@ -6552,7 +6560,7 @@
 								parentNode = node;
 								node = next;
 							}
-							for (;;) {
+							for (; ;) {
 								if (node === root) break b;
 								parentNode === JSCompiler_temp && ++indexWithinAnchor === anchorOffset && (start = length);
 								parentNode === focusNode && ++indexWithinFocus === selection && (end = length);
@@ -6826,7 +6834,7 @@
 		function commitDeletionEffectsOnFiber(finishedRoot, nearestMountedAncestor, deletedFiber) {
 			if (injectedHook && "function" === typeof injectedHook.onCommitFiberUnmount) try {
 				injectedHook.onCommitFiberUnmount(rendererID, deletedFiber);
-			} catch (err) {}
+			} catch (err) { }
 			switch (deletedFiber.tag) {
 				case 26:
 					offscreenSubtreeWasHidden || safelyDetachRef(deletedFiber, nearestMountedAncestor);
@@ -6937,7 +6945,7 @@
 		}
 		function attachSuspenseRetryListeners(finishedWork, wakeables) {
 			var retryCache = getRetryCache(finishedWork);
-			wakeables.forEach(function(wakeable) {
+			wakeables.forEach(function (wakeable) {
 				if (!retryCache.has(wakeable)) {
 					retryCache.add(wakeable);
 					var retry = resolveRetryWakeable.bind(null, finishedWork, wakeable);
@@ -7693,12 +7701,12 @@
 			}
 		}
 		var DefaultAsyncDispatcher = {
-			getCacheForType: function(resourceType) {
+			getCacheForType: function (resourceType) {
 				var cache = readContext(CacheContext), cacheForType = cache.data.get(resourceType);
 				void 0 === cacheForType && (cacheForType = resourceType(), cache.data.set(resourceType, cacheForType));
 				return cacheForType;
 			},
-			cacheSignal: function() {
+			cacheSignal: function () {
 				return readContext(CacheContext).controller.signal;
 			}
 		};
@@ -7869,7 +7877,7 @@
 			completeRoot(root, finishedWork, lanes, recoverableErrors, transitions, didIncludeRenderPhaseUpdate, spawnedLane, updatedLanes, suspendedRetryLanes, didSkipSuspendedSiblings, exitStatus, suspendedCommitReason);
 		}
 		function isRenderConsistentWithExternalStores(finishedWork) {
-			for (var node = finishedWork;;) {
+			for (var node = finishedWork; ;) {
 				var tag = node.tag;
 				if ((0 === tag || 11 === tag || 15 === tag) && node.flags & 16384 && (tag = node.updateQueue, null !== tag && (tag = tag.stores, null !== tag))) for (var i = 0; i < tag.length; i++) {
 					var check = tag[i], getSnapshot = check.getSnapshot;
@@ -8043,7 +8051,7 @@
 									replaySuspendedUnitOfWork(lanes);
 									break;
 								}
-								lanes = function() {
+								lanes = function () {
 									2 !== workInProgressSuspendedReason && 9 !== workInProgressSuspendedReason || workInProgressRoot !== root || (workInProgressSuspendedReason = 7);
 									ensureRootIsScheduled(root);
 								};
@@ -8229,7 +8237,7 @@
 			markRootFinished(root, lanes, remainingLanes, spawnedLane, updatedLanes, suspendedRetryLanes);
 			pendingViewTransitionEvents = null;
 			(lanes & 335544064) === lanes ? (pendingTransitionTypes = claimQueuedTransitionTypes(root), spawnedLane = 10262) : (pendingTransitionTypes = null, spawnedLane = 10256);
-			0 !== (finishedWork.subtreeFlags & spawnedLane) || 0 !== (finishedWork.flags & spawnedLane) ? (root.callbackNode = null, root.callbackPriority = 0, scheduleCallback$1(NormalPriority$1, function() {
+			0 !== (finishedWork.subtreeFlags & spawnedLane) || 0 !== (finishedWork.flags & spawnedLane) ? (root.callbackNode = null, root.callbackPriority = 0, scheduleCallback$1(NormalPriority$1, function () {
 				flushPassiveEffects();
 				return null;
 			})) : (root.callbackNode = null, root.callbackPriority = 0);
@@ -8353,7 +8361,7 @@
 				finishedWork = finishedWork.stateNode;
 				if (injectedHook && "function" === typeof injectedHook.onCommitFiberRoot) try {
 					injectedHook.onCommitFiberRoot(rendererID, finishedWork, void 0, 128 === (finishedWork.current.flags & 128));
-				} catch (err) {}
+				} catch (err) { }
 				if (null !== recoverableErrors) {
 					finishedWork = ReactSharedInternals.T;
 					passiveSubtreeMask = ReactDOMSharedInternals.p;
@@ -8412,7 +8420,7 @@
 				flushSyncWorkAcrossRoots_impl(0, !1);
 				if (injectedHook && "function" === typeof injectedHook.onPostCommitFiberRoot) try {
 					injectedHook.onPostCommitFiberRoot(rendererID, root$jscomp$0);
-				} catch (err) {}
+				} catch (err) { }
 				return !0;
 			} finally {
 				ReactDOMSharedInternals.p = previousPriority, ReactSharedInternals.T = prevTransition, releaseRootPooledCache(root, remainingLanes);
@@ -8600,7 +8608,7 @@
 			performWorkOnRoot(root, lanes, !0);
 		}
 		function scheduleImmediateRootScheduleTask() {
-			scheduleMicrotask(function() {
+			scheduleMicrotask(function () {
 				0 !== (executionContext & 6) ? scheduleCallback$3(ImmediatePriority, processRootScheduleInImmediateTask) : processRootScheduleInMicrotask();
 			});
 		}
@@ -8624,7 +8632,7 @@
 					event,
 					listeners: [{
 						instance: null,
-						listener: function() {
+						listener: function () {
 							if (nativeEvent.defaultPrevented) {
 								if (0 !== currentEventTransitionLane) {
 									var formData = new FormData(nativeEventTarget, submitter);
@@ -8733,7 +8741,7 @@
 		function listenToAllSupportedEvents(rootContainerElement) {
 			if (!rootContainerElement[listeningMarker]) {
 				rootContainerElement[listeningMarker] = !0;
-				allNativeEvents.forEach(function(domEventName) {
+				allNativeEvents.forEach(function (domEventName) {
 					"selectionchange" !== domEventName && (nonDelegatedEvents.has(domEventName) || listenToNativeEvent(domEventName, !1, rootContainerElement), listenToNativeEvent(domEventName, !0, rootContainerElement));
 				});
 				var ownerDocument = 9 === rootContainerElement.nodeType ? rootContainerElement : rootContainerElement.ownerDocument;
@@ -8760,7 +8768,7 @@
 		}
 		function dispatchEventForPluginEventSystem(domEventName, eventSystemFlags, nativeEvent, targetInst$jscomp$0, targetContainer) {
 			var ancestorInst = targetInst$jscomp$0;
-			if (0 === (eventSystemFlags & 1) && 0 === (eventSystemFlags & 2) && null !== targetInst$jscomp$0) a: for (;;) {
+			if (0 === (eventSystemFlags & 1) && 0 === (eventSystemFlags & 2) && null !== targetInst$jscomp$0) a: for (; ;) {
 				if (null === targetInst$jscomp$0) return;
 				var nodeTag = targetInst$jscomp$0.tag;
 				if (3 === nodeTag || 4 === nodeTag) {
@@ -8784,7 +8792,7 @@
 				}
 				targetInst$jscomp$0 = targetInst$jscomp$0.return;
 			}
-			batchedUpdates$1(function() {
+			batchedUpdates$1(function () {
 				var targetInst = ancestorInst, nativeEventTarget = getEventTarget(nativeEvent), dispatchQueue = [];
 				a: {
 					var reactName = topLevelEventsToReactNames.get(domEventName);
@@ -9657,11 +9665,11 @@
 		var cancelTimeout = "function" === typeof clearTimeout ? clearTimeout : void 0;
 		var localPromise = "function" === typeof Promise ? Promise : void 0;
 		var localRequestAnimationFrame = "function" === typeof requestAnimationFrame ? requestAnimationFrame : scheduleTimeout;
-		var scheduleMicrotask = "function" === typeof queueMicrotask ? queueMicrotask : "undefined" !== typeof localPromise ? function(callback) {
+		var scheduleMicrotask = "function" === typeof queueMicrotask ? queueMicrotask : "undefined" !== typeof localPromise ? function (callback) {
 			return localPromise.resolve(null).then(callback).catch(handleErrorInNextTick);
 		} : scheduleTimeout;
 		function handleErrorInNextTick(error) {
-			setTimeout(function() {
+			setTimeout(function () {
 				throw error;
 			});
 		}
@@ -9760,7 +9768,7 @@
 			var ownerDocument = 9 === rootContainer.nodeType ? rootContainer : rootContainer.ownerDocument;
 			try {
 				var transition = ownerDocument.startViewTransition({
-					update: function() {
+					update: function () {
 						var ownerWindow = ownerDocument.defaultView, pendingNavigation = ownerWindow.navigation && ownerWindow.navigation.transition, previousFontLoadingStatus = ownerDocument.fonts.status;
 						mutationCallback();
 						var blockingPromises = [];
@@ -9781,7 +9789,7 @@
 								}
 							}
 						}
-						if (0 < blockingPromises.length) return ownerWindow = Promise.race([Promise.all(blockingPromises), new Promise(function(resolve) {
+						if (0 < blockingPromises.length) return ownerWindow = Promise.race([Promise.all(blockingPromises), new Promise(function (resolve) {
 							return setTimeout(resolve, 500);
 						})]).then(layoutCallback, layoutCallback), (pendingNavigation ? Promise.allSettled([pendingNavigation.finished, ownerWindow]) : ownerWindow).then(afterMutationCallback, afterMutationCallback);
 						layoutCallback();
@@ -9792,7 +9800,7 @@
 				});
 				ownerDocument.__reactViewTransition = transition;
 				var viewTransitionAnimations = [];
-				transition.ready.then(function() {
+				transition.ready.then(function () {
 					for (var animations = ownerDocument.documentElement.getAnimations({ subtree: !0 }), i = 0; i < animations.length; i++) {
 						var animation = animations[i], effect = animation.effect, pseudoElement = effect.pseudoElement;
 						if (null != pseudoElement && pseudoElement.startsWith("::view-transition")) {
@@ -9819,7 +9827,7 @@
 						}
 					}
 					spawnedWorkCallback();
-				}, function(error) {
+				}, function (error) {
 					ownerDocument.__reactViewTransition === transition && (ownerDocument.__reactViewTransition = null);
 					try {
 						if ("object" === typeof error && null !== error) switch (error.name) {
@@ -9830,7 +9838,7 @@
 						mutationCallback(), layoutCallback(), spawnedWorkCallback();
 					}
 				});
-				transition.finished.finally(function() {
+				transition.finished.finally(function () {
 					for (var i = 0; i < viewTransitionAnimations.length; i++) viewTransitionAnimations[i].cancel();
 					ownerDocument.__reactViewTransition === transition && (ownerDocument.__reactViewTransition = null);
 					passiveCallback();
@@ -9844,19 +9852,19 @@
 			this._scope = document.documentElement;
 			this._selector = "::view-transition-" + pseudo + "(" + name + ")";
 		}
-		ViewTransitionPseudoElement.prototype.animate = function(keyframes, options) {
+		ViewTransitionPseudoElement.prototype.animate = function (keyframes, options) {
 			options = "number" === typeof options ? { duration: options } : assign({}, options);
 			options.pseudoElement = this._selector;
 			return this._scope.animate(keyframes, options);
 		};
-		ViewTransitionPseudoElement.prototype.getAnimations = function() {
+		ViewTransitionPseudoElement.prototype.getAnimations = function () {
 			for (var scope = this._scope, selector = this._selector, animations = scope.getAnimations({ subtree: !0 }), result = [], i = 0; i < animations.length; i++) {
 				var effect = animations[i].effect;
 				null !== effect && effect.target === scope && effect.pseudoElement === selector && result.push(animations[i]);
 			}
 			return result;
 		};
-		ViewTransitionPseudoElement.prototype.getComputedStyle = function() {
+		ViewTransitionPseudoElement.prototype.getComputedStyle = function () {
 			return getComputedStyle(this._scope, this._selector);
 		};
 		function createViewTransitionInstance(name) {
@@ -9872,14 +9880,14 @@
 			this._fragmentFiber = fragmentFiber;
 			this._observers = this._eventListeners = null;
 		}
-		FragmentInstance.prototype.addEventListener = function(type, listener, optionsOrUseCapture) {
+		FragmentInstance.prototype.addEventListener = function (type, listener, optionsOrUseCapture) {
 			var signal = null, cleanup = null;
 			if (null != optionsOrUseCapture && "boolean" !== typeof optionsOrUseCapture && (signal = optionsOrUseCapture.signal || null, null !== signal && signal.aborted)) return;
 			null === this._eventListeners && (this._eventListeners = []);
 			var listeners = this._eventListeners;
 			if (-1 === indexOfEventListener(listeners, type, listener, optionsOrUseCapture)) {
 				var fragmentInstance = this, attachedListener = listener;
-				null != optionsOrUseCapture && "boolean" !== typeof optionsOrUseCapture && !0 === optionsOrUseCapture.once && (attachedListener = function(event) {
+				null != optionsOrUseCapture && "boolean" !== typeof optionsOrUseCapture && !0 === optionsOrUseCapture.once && (attachedListener = function (event) {
 					fragmentInstance.removeEventListener(type, listener, optionsOrUseCapture);
 					"function" === typeof listener ? listener.call(this, event) : listener.handleEvent(event);
 				});
@@ -9900,7 +9908,7 @@
 			getInstanceFromHostFiber(child).addEventListener(type, listener, optionsOrUseCapture);
 			return !1;
 		}
-		FragmentInstance.prototype.removeEventListener = function(type, listener, optionsOrUseCapture) {
+		FragmentInstance.prototype.removeEventListener = function (type, listener, optionsOrUseCapture) {
 			var listeners = this._eventListeners;
 			if (null !== listeners && (listener = indexOfEventListener(listeners, type, listener, optionsOrUseCapture), -1 !== listener)) {
 				var _listeners$index = listeners[listener];
@@ -9934,7 +9942,7 @@
 			}
 			return -1;
 		}
-		FragmentInstance.prototype.dispatchEvent = function(event) {
+		FragmentInstance.prototype.dispatchEvent = function (event) {
 			var parentHostFiber = getFragmentParentInstanceOrContainerFiber(this._fragmentFiber);
 			if (null === parentHostFiber) return !0;
 			parentHostFiber = getInstanceFromHostFiber(parentHostFiber);
@@ -9953,7 +9961,7 @@
 			}
 			return parentHostFiber.dispatchEvent(event);
 		};
-		FragmentInstance.prototype.focus = function(focusOptions) {
+		FragmentInstance.prototype.focus = function (focusOptions) {
 			traverseVisibleInstancesAndTextInstances(this._fragmentFiber.child, !0, setFocusOnFiberIfFocusable, focusOptions, void 0, void 0);
 		};
 		function setFocusOnFiberIfFocusable(fiber, focusOptions) {
@@ -9961,7 +9969,7 @@
 			fiber = getInstanceFromHostFiber(fiber);
 			return setFocusIfFocusable(fiber, focusOptions);
 		}
-		FragmentInstance.prototype.focusLast = function(focusOptions) {
+		FragmentInstance.prototype.focusLast = function (focusOptions) {
 			var children = [];
 			traverseVisibleInstancesAndTextInstances(this._fragmentFiber.child, !0, collectChildren, children, void 0, void 0);
 			for (var i = children.length - 1; 0 <= i && !setFocusOnFiberIfFocusable(children[i], focusOptions); i--);
@@ -9970,7 +9978,7 @@
 			collection.push(child);
 			return !1;
 		}
-		FragmentInstance.prototype.blur = function() {
+		FragmentInstance.prototype.blur = function () {
 			var parentHostFiber = getFragmentParentInstanceOrContainerFiber(this._fragmentFiber);
 			null !== parentHostFiber && (parentHostFiber = getInstanceFromHostFiber(parentHostFiber), parentHostFiber = getOwnerDocumentFromRootContainer(parentHostFiber).activeElement, null !== parentHostFiber && traverseVisibleInstancesAndTextInstances(this._fragmentFiber.child, !1, blurActiveElementWithinFragment, parentHostFiber, void 0, void 0));
 		};
@@ -9979,7 +9987,7 @@
 			child = getInstanceFromHostFiber(child);
 			return child === activeElement || child.contains(activeElement) ? (activeElement.blur(), !0) : !1;
 		}
-		FragmentInstance.prototype.observeUsing = function(observer) {
+		FragmentInstance.prototype.observeUsing = function (observer) {
 			null === this._observers && (this._observers = /* @__PURE__ */ new Set());
 			this._observers.add(observer);
 			traverseVisibleInstancesAndTextInstances(this._fragmentFiber.child, !1, observeChild, observer, void 0, void 0);
@@ -9990,7 +9998,7 @@
 			observer.observe(child);
 			return !1;
 		}
-		FragmentInstance.prototype.unobserveUsing = function(observer) {
+		FragmentInstance.prototype.unobserveUsing = function (observer) {
 			var observers = this._observers;
 			if (null !== observers && observers.has(observer)) {
 				observers.delete(observer);
@@ -10016,7 +10024,7 @@
 				observer,
 				instance
 			});
-			intersectionUnobserveScheduled || (intersectionUnobserveScheduled = !0, requestPostPaintCallback(function() {
+			intersectionUnobserveScheduled || (intersectionUnobserveScheduled = !0, requestPostPaintCallback(function () {
 				intersectionUnobserveScheduled = !1;
 				var pending = pendingIntersectionUnobserves;
 				pendingIntersectionUnobserves = [];
@@ -10026,7 +10034,7 @@
 				}
 			}));
 		}
-		FragmentInstance.prototype.getClientRects = function() {
+		FragmentInstance.prototype.getClientRects = function () {
 			var rects = [];
 			traverseVisibleInstancesAndTextInstances(this._fragmentFiber.child, !1, collectClientRects, rects, void 0, void 0);
 			return rects;
@@ -10040,11 +10048,11 @@
 			} else child = getInstanceFromHostFiber(child), rects.push.apply(rects, child.getClientRects());
 			return !1;
 		}
-		FragmentInstance.prototype.getRootNode = function(getRootNodeOptions) {
+		FragmentInstance.prototype.getRootNode = function (getRootNodeOptions) {
 			var parentHostFiber = getFragmentParentInstanceOrContainerFiber(this._fragmentFiber);
 			return null === parentHostFiber ? this : getInstanceFromHostFiber(parentHostFiber).getRootNode(getRootNodeOptions);
 		};
-		FragmentInstance.prototype.compareDocumentPosition = function(otherNode) {
+		FragmentInstance.prototype.compareDocumentPosition = function (otherNode) {
 			var parentHostFiber = getFragmentParentInstanceOrContainerFiber(this._fragmentFiber);
 			if (null === parentHostFiber) return Node.DOCUMENT_POSITION_DISCONNECTED;
 			var children = [];
@@ -10120,7 +10128,7 @@
 			textNode = range.getBoundingClientRect();
 			window.scrollTo(window.scrollX + textNode.left, resolvedAlignToTop ? window.scrollY + textNode.top : window.scrollY + textNode.bottom - window.innerHeight);
 		}
-		FragmentInstance.prototype.scrollIntoView = function(alignToTop) {
+		FragmentInstance.prototype.scrollIntoView = function (alignToTop) {
 			if ("object" === typeof alignToTop) throw Error(formatProdErrorMessage(566));
 			var children = [];
 			traverseVisibleInstancesAndTextInstances(this._fragmentFiber.child, !1, collectChildren, children, void 0, void 0);
@@ -10165,7 +10173,7 @@
 				var _eventListeners$i3 = eventListeners[i$jscomp$0];
 				childInstance.addEventListener(_eventListeners$i3.type, _eventListeners$i3.attachedListener, getAttachOptions(_eventListeners$i3.optionsOrUseCapture));
 			}
-			3 !== childInstance.nodeType && (eventListeners = fragmentInstance._observers, null !== eventListeners && eventListeners.forEach(function(observer) {
+			3 !== childInstance.nodeType && (eventListeners = fragmentInstance._observers, null !== eventListeners && eventListeners.forEach(function (observer) {
 				for (var writeIdx = 0, i = 0; i < pendingIntersectionUnobserves.length; i++) {
 					var pending = pendingIntersectionUnobserves[i];
 					if (pending.fragmentInstance !== fragmentInstance || pending.observer !== observer || pending.instance !== childInstance) pendingIntersectionUnobserves[writeIdx++] = pending;
@@ -10180,7 +10188,7 @@
 				var _eventListeners$i4 = eventListeners[i];
 				childInstance.removeEventListener(_eventListeners$i4.type, _eventListeners$i4.attachedListener, getAttachOptions(_eventListeners$i4.optionsOrUseCapture));
 			}
-			3 !== childInstance.nodeType && (eventListeners = fragmentInstance._observers, null !== eventListeners && eventListeners.forEach(function(observer) {
+			3 !== childInstance.nodeType && (eventListeners = fragmentInstance._observers, null !== eventListeners && eventListeners.forEach(function (observer) {
 				"string" === typeof observer.rootMargin ? schedulePendingIntersectionUnobserve(fragmentInstance, observer, childInstance) : observer.unobserve(childInstance);
 			}), null != childInstance.reactFragments && childInstance.reactFragments.delete(fragmentInstance));
 		}
@@ -10264,7 +10272,7 @@
 			if ("$~" === instance.data) instance._reactRetry = callback;
 			else if ("$?" !== instance.data || "loading" !== ownerDocument.readyState) callback();
 			else {
-				var listener = function() {
+				var listener = function () {
 					callback();
 					ownerDocument.removeEventListener("DOMContentLoaded", listener);
 				};
@@ -10327,8 +10335,8 @@
 			return didFocus;
 		}
 		function requestPostPaintCallback(callback) {
-			localRequestAnimationFrame(function() {
-				localRequestAnimationFrame(function(time) {
+			localRequestAnimationFrame(function () {
+				localRequestAnimationFrame(function (time) {
 					return callback(time);
 				});
 			});
@@ -10435,7 +10443,7 @@
 				}, options), preloadPropsMap.set(key, href), null !== ownerDocument.querySelector(preloadSelector) || "style" === as && ownerDocument.querySelector(getStylesheetSelectorFromKey(key)) || "script" === as && ownerDocument.querySelector(getScriptSelectorFromKey(key))))) {
 					var instance = ownerDocument.createElement("link");
 					setInitialProperties(instance, "link", href);
-					"style" === as && (instance[internalLoadPendingKey] = !0, instance.onload = instance.onerror = function() {
+					"style" === as && (instance[internalLoadPendingKey] = !0, instance.onload = instance.onerror = function () {
 						clearPendingLoadOnNode(instance);
 					});
 					markNodeAsHoistable(instance);
@@ -10498,14 +10506,14 @@
 						var link = resource = ownerDocument.createElement("link");
 						markNodeAsHoistable(link);
 						setInitialProperties(link, "link", href);
-						link._p = new Promise(function(resolve, reject) {
+						link._p = new Promise(function (resolve, reject) {
 							link.onload = resolve;
 							link.onerror = reject;
 						});
-						link.addEventListener("load", function() {
+						link.addEventListener("load", function () {
 							state.loading |= 1;
 						});
-						link.addEventListener("error", function() {
+						link.addEventListener("error", function () {
 							state.loading |= 2;
 						});
 						state.loading |= 4;
@@ -10632,10 +10640,10 @@
 				}
 			} else key = ownerDocument.createElement("link"), key[internalLoadPendingKey] = !0, key.onload = key.onerror = clearPendingLoadOnNode.bind(null, key), setInitialProperties(key, "link", preloadProps), markNodeAsHoistable(key), ownerDocument.head.appendChild(key);
 			state.preload = key;
-			key.addEventListener("load", function() {
+			key.addEventListener("load", function () {
 				return state.loading |= 1;
 			});
-			key.addEventListener("error", function() {
+			key.addEventListener("error", function () {
 				return state.loading |= 2;
 			});
 		}
@@ -10671,7 +10679,7 @@
 					instance$274 = (hoistableRoot.ownerDocument || hoistableRoot).createElement("link");
 					markNodeAsHoistable(instance$274);
 					var linkInstance = instance$274;
-					linkInstance._p = new Promise(function(resolve, reject) {
+					linkInstance._p = new Promise(function (resolve, reject) {
 						linkInstance.onload = resolve;
 						linkInstance.onerror = reject;
 					});
@@ -10787,7 +10795,7 @@
 					instance = instance.createElement("link");
 					markNodeAsHoistable(instance);
 					var linkInstance = instance;
-					linkInstance._p = new Promise(function(resolve, reject) {
+					linkInstance._p = new Promise(function (resolve, reject) {
 						linkInstance.onload = resolve;
 						linkInstance.onerror = reject;
 					});
@@ -10802,8 +10810,8 @@
 		var estimatedBytesWithinLimit = 0;
 		function waitForCommitToBeReady(state, timeoutOffset) {
 			state.stylesheets && 0 === state.count && insertSuspendedStylesheets(state, state.stylesheets);
-			return 0 < state.count || 0 < state.imgCount ? function(commit) {
-				var stylesheetTimer = setTimeout(function() {
+			return 0 < state.count || 0 < state.imgCount ? function (commit) {
+				var stylesheetTimer = setTimeout(function () {
 					state.stylesheets && insertSuspendedStylesheets(state, state.stylesheets);
 					if (state.unsuspend) {
 						var unsuspend = state.unsuspend;
@@ -10812,7 +10820,7 @@
 					}
 				}, 6e4 + timeoutOffset);
 				0 < state.imgBytes && 0 === estimatedBytesWithinLimit && (estimatedBytesWithinLimit = 62500 * estimateBandwidth());
-				var imgTimer = setTimeout(function() {
+				var imgTimer = setTimeout(function () {
 					state.waitingForImages = !1;
 					if (0 === state.count && (state.stylesheets && insertSuspendedStylesheets(state, state.stylesheets), state.unsuspend)) {
 						var unsuspend = state.unsuspend;
@@ -10821,7 +10829,7 @@
 					}
 				}, (state.imgBytes > estimatedBytesWithinLimit ? 50 : 800) + timeoutOffset);
 				state.unsuspend = commit;
-				return function() {
+				return function () {
 					state.unsuspend = null;
 					clearTimeout(stylesheetTimer);
 					clearTimeout(imgTimer);
@@ -11205,7 +11213,7 @@
 					if (targetInst = nearestMounted.tag, 13 === targetInst) {
 						if (targetInst = getSuspenseInstanceFromFiber(nearestMounted), null !== targetInst) {
 							queuedTarget.blockedOn = targetInst;
-							runWithPriority(queuedTarget.priority, function() {
+							runWithPriority(queuedTarget.priority, function () {
 								attemptHydrationAtCurrentPriority(nearestMounted);
 							});
 							return;
@@ -11213,7 +11221,7 @@
 					} else if (31 === targetInst) {
 						if (targetInst = getActivityInstanceFromFiber(nearestMounted), null !== targetInst) {
 							queuedTarget.blockedOn = targetInst;
-							runWithPriority(queuedTarget.priority, function() {
+							runWithPriority(queuedTarget.priority, function () {
 								attemptHydrationAtCurrentPriority(nearestMounted);
 							});
 							return;
@@ -11257,7 +11265,7 @@
 		}
 		var lastScheduledReplayQueue = null;
 		function scheduleReplayQueueIfNeeded(formReplayingQueue) {
-			lastScheduledReplayQueue !== formReplayingQueue && (lastScheduledReplayQueue = formReplayingQueue, Scheduler.unstable_scheduleCallback(Scheduler.unstable_NormalPriority, function() {
+			lastScheduledReplayQueue !== formReplayingQueue && (lastScheduledReplayQueue = formReplayingQueue, Scheduler.unstable_scheduleCallback(Scheduler.unstable_NormalPriority, function () {
 				lastScheduledReplayQueue === formReplayingQueue && (lastScheduledReplayQueue = null);
 				for (var i = 0; i < formReplayingQueue.length; i += 3) {
 					var form = formReplayingQueue[i], submitterOrAction = formReplayingQueue[i + 1], formData = formReplayingQueue[i + 2];
@@ -11305,8 +11313,8 @@
 		function defaultOnDefaultTransitionIndicator() {
 			function handleNavigate(event) {
 				event.canIntercept && "react-transition" === event.info && event.intercept({
-					handler: function() {
-						return new Promise(function(resolve) {
+					handler: function () {
+						return new Promise(function (resolve) {
 							return pendingResolve = resolve;
 						});
 					},
@@ -11334,7 +11342,7 @@
 				navigation.addEventListener("navigatesuccess", handleNavigateComplete);
 				navigation.addEventListener("navigateerror", handleNavigateComplete);
 				setTimeout(startFakeNavigation, 100);
-				return function() {
+				return function () {
 					isCancelled = !0;
 					navigation.removeEventListener("navigate", handleNavigate);
 					navigation.removeEventListener("navigatesuccess", handleNavigateComplete);
@@ -11346,13 +11354,13 @@
 		function ReactDOMRoot(internalRoot) {
 			this._internalRoot = internalRoot;
 		}
-		ReactDOMHydrationRoot.prototype.render = ReactDOMRoot.prototype.render = function(children) {
+		ReactDOMHydrationRoot.prototype.render = ReactDOMRoot.prototype.render = function (children) {
 			var root = this._internalRoot;
 			if (null === root) throw Error(formatProdErrorMessage(409));
 			var current = root.current;
 			updateContainerImpl(current, requestUpdateLane(), children, root, null, null);
 		};
-		ReactDOMHydrationRoot.prototype.unmount = ReactDOMRoot.prototype.unmount = function() {
+		ReactDOMHydrationRoot.prototype.unmount = ReactDOMRoot.prototype.unmount = function () {
 			var root = this._internalRoot;
 			if (null !== root) {
 				this._internalRoot = null;
@@ -11365,7 +11373,7 @@
 		function ReactDOMHydrationRoot(internalRoot) {
 			this._internalRoot = internalRoot;
 		}
-		ReactDOMHydrationRoot.prototype.unstable_scheduleHydration = function(target) {
+		ReactDOMHydrationRoot.prototype.unstable_scheduleHydration = function (target) {
 			if (target) {
 				var updatePriority = resolveUpdatePriority();
 				target = {
@@ -11380,7 +11388,7 @@
 		};
 		var isomorphicReactPackageVersion$jscomp$inline_2043 = React.version;
 		if ("19.3.0" !== isomorphicReactPackageVersion$jscomp$inline_2043) throw Error(formatProdErrorMessage(527, isomorphicReactPackageVersion$jscomp$inline_2043, "19.3.0"));
-		ReactDOMSharedInternals.findDOMNode = function(componentOrElement) {
+		ReactDOMSharedInternals.findDOMNode = function (componentOrElement) {
 			var fiber = componentOrElement._reactInternals;
 			if (void 0 === fiber) {
 				if ("function" === typeof componentOrElement.render) throw Error(formatProdErrorMessage(188));
@@ -11403,9 +11411,9 @@
 			var hook$jscomp$inline_2587 = __REACT_DEVTOOLS_GLOBAL_HOOK__;
 			if (!hook$jscomp$inline_2587.isDisabled && hook$jscomp$inline_2587.supportsFiber) try {
 				rendererID = hook$jscomp$inline_2587.inject(internals$jscomp$inline_2586), injectedHook = hook$jscomp$inline_2587;
-			} catch (err) {}
+			} catch (err) { }
 		}
-		exports.createRoot = function(container, options) {
+		exports.createRoot = function (container, options) {
 			if (!isValidContainer(container)) throw Error(formatProdErrorMessage(299));
 			var isStrictMode = !1, identifierPrefix = "", onUncaughtError = defaultOnUncaughtError, onCaughtError = defaultOnCaughtError, onRecoverableError = defaultOnRecoverableError;
 			null !== options && void 0 !== options && (!0 === options.unstable_strictMode && (isStrictMode = !0), void 0 !== options.identifierPrefix && (identifierPrefix = options.identifierPrefix), void 0 !== options.onUncaughtError && (onUncaughtError = options.onUncaughtError), void 0 !== options.onCaughtError && (onCaughtError = options.onCaughtError), void 0 !== options.onRecoverableError && (onRecoverableError = options.onRecoverableError));
@@ -11506,85 +11514,85 @@
 					},
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-							src: IMAGES.hero1,
-							alt: "八重滝の紅葉と滝",
-							className: "w-full h-full object-cover"
-						}),
+						src: IMAGES.hero1,
+						alt: "八重滝の紅葉と滝",
+						className: "w-full h-full object-cover"
+					}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-							src: IMAGES.hero2,
-							alt: "清流",
-							className: "w-full h-full object-cover"
-						}),
+						src: IMAGES.hero2,
+						alt: "清流",
+						className: "w-full h-full object-cover"
+					}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-							src: IMAGES.hero3,
-							alt: "森の滝",
-							className: "w-full h-full object-cover col-span-2"
-						})
+						src: IMAGES.hero3,
+						alt: "森の滝",
+						className: "w-full h-full object-cover col-span-2"
+					})
 					]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute inset-0 hero-overlay" })]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "relative z-10 flex flex-col items-center justify-center flex-1 px-5 py-16 text-center gap-6",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-lg",
+					className: "inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-lg",
+					style: {
+						background: "rgba(255,255,255,0.22)",
+						backdropFilter: "blur(8px)",
+						border: "2px solid rgba(255,255,255,0.4)",
+						color: "white"
+					},
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "🗓" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "応募期間：2026/08/01〜2027/03/31" })]
+				}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-col items-center gap-1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "font-black leading-none",
 						style: {
-							background: "rgba(255,255,255,0.22)",
-							backdropFilter: "blur(8px)",
-							border: "2px solid rgba(255,255,255,0.4)",
-							color: "white"
+							fontSize: "clamp(4.0rem, 16vw, 6.5rem)",
+							background: "linear-gradient(135deg, #ffffff 0%, #c8b8ff 50%, #a5d0ff 100%)",
+							WebkitBackgroundClip: "text",
+							WebkitTextFillColor: "transparent",
+							backgroundClip: "text",
+							textShadow: "none",
+							letterSpacing: "-0.01em",
+							filter: "drop-shadow(0 2px 16px rgba(106,61,232,0.5))"
 						},
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "🗓" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "応募期間：2026/08/01〜2027/03/31" })]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex flex-col items-center gap-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "font-black leading-none",
-							style: {
-								fontSize: "clamp(4.0rem, 16vw, 6.5rem)",
-								background: "linear-gradient(135deg, #ffffff 0%, #c8b8ff 50%, #a5d0ff 100%)",
-								WebkitBackgroundClip: "text",
-								WebkitTextFillColor: "transparent",
-								backgroundClip: "text",
-								textShadow: "none",
-								letterSpacing: "-0.01em",
-								filter: "drop-shadow(0 2px 16px rgba(106,61,232,0.5))"
-							},
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ruby", { children: ["八重滝", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rt", { style: { fontSize: "0.4em" }, children: "やえだき" })] })
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "font-black leading-none",
-							style: {
-								fontSize: "clamp(2.5rem, 11vw, 4.5rem)",
-								background: "linear-gradient(135deg, #ffffff 0%, #c8b8ff 50%, #a5d0ff 100%)",
-								WebkitBackgroundClip: "text",
-								WebkitTextFillColor: "transparent",
-								backgroundClip: "text",
-								filter: "drop-shadow(0 2px 12px rgba(106,61,232,0.4))"
-							},
-							children: "フォトラリー"
-						})]
-					}),
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("ruby", { children: ["八重滝", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("rt", { style: { fontSize: "0.4em" }, children: "やえだき" })] })
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "font-black leading-none",
+						style: {
+							fontSize: "clamp(2.5rem, 11vw, 4.5rem)",
+							background: "linear-gradient(135deg, #ffffff 0%, #c8b8ff 50%, #a5d0ff 100%)",
+							WebkitBackgroundClip: "text",
+							WebkitTextFillColor: "transparent",
+							backgroundClip: "text",
+							filter: "drop-shadow(0 2px 12px rgba(106,61,232,0.4))"
+						},
+						children: "フォトラリー"
+					})]
+				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-						className: "text-white/90 font-bold text-base max-w-xs leading-relaxed",
-						children: [
-							"美しい八重滝を写真に撮って",
+					className: "text-white/90 font-bold text-base max-w-xs leading-relaxed",
+					children: [
+						"美しい八重滝を写真に撮って",
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
-							"インスタグラムに投稿しよう！"
-						]
-					}),
+						"インスタグラムに投稿しよう！"
+					]
+				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex flex-col items-center gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "text-white/80 text-sm font-bold",
-							children: "投稿時は↓のハッシュタグを忘れずに！"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HashtagBadge, { size: "lg" })]
-					}),
+					className: "flex flex-col items-center gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-white/80 text-sm font-bold",
+						children: "投稿時は↓のハッシュタグを忘れずに！"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HashtagBadge, { size: "lg" })]
+				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mt-4 float-anim text-white/60 text-sm flex flex-col items-center gap-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "スクロールして詳細を見る" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "text-2xl",
-							children: "↓"
-						})]
-					})
+					className: "mt-4 float-anim text-white/60 text-sm flex flex-col items-center gap-1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "スクロールして詳細を見る" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-2xl",
+						children: "↓"
+					})]
+				})
 				]
 			})]
 		});
@@ -11628,84 +11636,84 @@
 				className: "max-w-md mx-auto flex flex-col gap-8",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "text-center",
-						children: [
+					className: "text-center",
+					children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "inline-block text-3xl mb-2",
-								children: "🎁"
-							}),
+						className: "inline-block text-3xl mb-2",
+						children: "🎁"
+					}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
-								className: "font-black text-2xl leading-tight",
-								style: { color: "#3a1a8a" },
-								children: [
-									"投稿で",
+						className: "font-black text-2xl leading-tight",
+						style: { color: "#3a1a8a" },
+						children: [
+							"投稿で",
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										style: { color: "#6A3DE8" },
-										children: "豪華景品"
-									}),
-									"GET！"
-								]
+								style: { color: "#6A3DE8" },
+								children: "豪華景品"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-								className: "text-gray-600 font-bold mt-2 text-sm",
-								children: [
-									"八重滝の写真をInstagramに投稿するだけで",
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
-									"応募完了！抽選で素敵な賞品が当たります✨"
-								]
-							})
+							"GET！"
 						]
 					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "flex flex-col gap-4",
-						children: STEPS.map(({ step, emoji, title, body }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "step-card flex gap-4 items-start",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-								className: "flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-2xl",
-								style: { background: "linear-gradient(135deg, #6A3DE8 0%, #3D8BFF 100%)" },
-								children: emoji
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "flex-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "flex items-center gap-2 mb-1",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "text-xs font-black px-2 py-0.5 rounded-full",
-										style: {
-											background: "#f0eaff",
-											color: "#6A3DE8"
-										},
-										children: ["STEP ", step]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "font-black text-base",
-										style: { color: "#3a1a8a" },
-										children: title
-									})]
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-sm text-gray-600 font-medium leading-relaxed",
-									children: body
-								})]
-							})]
-						}, step))
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "rounded-2xl p-5 text-center flex flex-col gap-3",
-						style: {
-							background: "linear-gradient(135deg, #f0eaff 0%, #e8f2ff 100%)",
-							border: "2px dashed #a78bfa"
-						},
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "text-gray-600 font-bold mt-2 text-sm",
 						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "font-black text-base",
-								style: { color: "#3a1a8a" },
-								children: "📌 投稿時は必ずこのタグをつけてね！"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HashtagBadge, { size: "lg" }),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-xs text-gray-500 font-bold",
-								children: "※公開アカウントでの投稿が応募の条件です"
-							})
+							"八重滝の写真をInstagramに投稿するだけで",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
+							"応募完了！抽選で素敵な賞品が当たります✨"
 						]
 					})
+					]
+				}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "flex flex-col gap-4",
+					children: STEPS.map(({ step, emoji, title, body }) => /* @__PURE__ */(0, import_jsx_runtime.jsxs)("div", {
+						className: "step-card flex gap-4 items-start",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-2xl",
+							style: { background: "linear-gradient(135deg, #6A3DE8 0%, #3D8BFF 100%)" },
+							children: emoji
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex-1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex items-center gap-2 mb-1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "text-xs font-black px-2 py-0.5 rounded-full",
+									style: {
+										background: "#f0eaff",
+										color: "#6A3DE8"
+									},
+									children: ["STEP ", step]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-black text-base",
+									style: { color: "#3a1a8a" },
+									children: title
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-sm text-gray-600 font-medium leading-relaxed",
+								children: body
+							})]
+						})]
+					}, step))
+				}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "rounded-2xl p-5 text-center flex flex-col gap-3",
+					style: {
+						background: "linear-gradient(135deg, #f0eaff 0%, #e8f2ff 100%)",
+						border: "2px dashed #a78bfa"
+					},
+					children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "font-black text-base",
+						style: { color: "#3a1a8a" },
+						children: "📌 投稿時は必ずこのタグをつけてね！"
+					}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HashtagBadge, { size: "lg" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-gray-500 font-bold",
+						children: "※公開アカウントでの投稿が応募の条件です"
+					})
+					]
+				})
 				]
 			})
 		});
@@ -11740,11 +11748,13 @@
 						gridTemplateRows: `repeat(${GRID_SIZE}, 8px)`,
 						gap: "0"
 					},
-					children: cells.map((filled, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { style: {
-						width: 8,
-						height: 8,
-						backgroundColor: filled ? "#1a1a2e" : "transparent"
-					} }, i))
+					children: cells.map((filled, i) => /* @__PURE__ */(0, import_jsx_runtime.jsx)("div", {
+						style: {
+							width: 8,
+							height: 8,
+							backgroundColor: filled ? "#1a1a2e" : "transparent"
+						}
+					}, i))
 				})
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "text-xs text-center font-bold",
@@ -11764,81 +11774,83 @@
 				className: "max-w-md mx-auto flex flex-col gap-8",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "text-center",
-						children: [
+					className: "text-center",
+					children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "inline-block text-3xl mb-2",
-								children: "📋"
-							}),
+						className: "inline-block text-3xl mb-2",
+						children: "📋"
+					}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-								className: "font-black text-2xl text-white",
-								children: "イベントポスター"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-white/80 text-sm font-bold mt-1",
-								children: "現地にも掲示しています"
-							})
-						]
+						className: "font-black text-2xl text-white",
+						children: "イベントポスター"
 					}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-white/80 text-sm font-bold mt-1",
+						children: "現地にも掲示しています"
+					})
+					]
+				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "rounded-3xl overflow-hidden",
+					className: "rounded-3xl overflow-hidden",
+					style: {
+						boxShadow: "0 16px 48px rgba(0,0,0,0.30)",
+						border: "4px solid rgba(255,255,255,0.3)"
+					},
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "w-full flex flex-col items-center justify-center gap-4 py-16 px-8 text-center",
 						style: {
-							boxShadow: "0 16px 48px rgba(0,0,0,0.30)",
-							border: "4px solid rgba(255,255,255,0.3)"
+							background: "linear-gradient(160deg, #4a1fa0 0%, #1a3a8a 100%)",
+							minHeight: 400
 						},
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "w-full flex flex-col items-center justify-center gap-4 py-16 px-8 text-center",
-							style: {
-								background: "linear-gradient(160deg, #4a1fa0 0%, #1a3a8a 100%)",
-								minHeight: 400
-							},
-							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "w-20 h-20 rounded-full flex items-center justify-center text-4xl",
-									style: { background: "rgba(255,255,255,0.15)" },
-									children: "🏞️"
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "text-white/50 text-xs font-bold mb-2 tracking-widest",
-										children: "POSTER IMAGE"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "text-white font-black text-xl",
-										children: "八重滝フォトラリー"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "text-white/70 font-bold text-sm mt-1",
-										children: "イベントポスター"
-									})
-								] }),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "px-4 py-1.5 rounded-full text-sm font-black text-white",
-									style: {
-										background: "rgba(255,255,255,0.20)",
-										border: "1px solid rgba(255,255,255,0.35)"
-									},
-									children: "※ポスター画像は後日差し替えてください"
-								})
-							]
-						})
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "bg-white rounded-3xl p-6",
-						style: { boxShadow: "0 8px 32px rgba(0,0,0,0.15)" },
 						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-								className: "font-black text-center text-base mb-4",
-								style: { color: "#3a1a8a" },
-								children: "📲 このページをシェア"
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "w-20 h-20 rounded-full flex items-center justify-center text-4xl",
+							style: { background: "rgba(255,255,255,0.15)" },
+							children: "🏞️"
+						}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-white/50 text-xs font-bold mb-2 tracking-widest",
+								children: "POSTER IMAGE"
 							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QRPlaceholder, {}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-xs text-center text-gray-400 font-bold mt-3",
-								children: "※URLは後日差し替え予定"
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-white font-black text-xl",
+								children: "八重滝フォトラリー"
+							}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-white/70 font-bold text-sm mt-1",
+								children: "イベントポスター"
 							})
+							]
+						}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "px-4 py-1.5 rounded-full text-sm font-black text-white",
+							style: {
+								background: "rgba(255,255,255,0.20)",
+								border: "1px solid rgba(255,255,255,0.35)"
+							},
+							children: "※ポスター画像は後日差し替えてください"
+						})
 						]
 					})
+				}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "bg-white rounded-3xl p-6",
+					style: { boxShadow: "0 8px 32px rgba(0,0,0,0.15)" },
+					children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+						className: "font-black text-center text-base mb-4",
+						style: { color: "#3a1a8a" },
+						children: "📲 このページをシェア"
+					}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QRPlaceholder, {}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-xs text-center text-gray-400 font-bold mt-3",
+						children: "※URLは後日差し替え予定"
+					})
+					]
+				})
 				]
 			})
 		});
@@ -11854,149 +11866,151 @@
 				className: "max-w-md mx-auto flex flex-col gap-8",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "text-center",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "inline-block text-3xl mb-2",
-							children: "🌿"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
-							className: "font-black text-2xl leading-tight",
-							style: { color: "#3a1a8a" },
-							children: [
-								"入間って",
+					className: "text-center",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "inline-block text-3xl mb-2",
+						children: "🌿"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("h2", {
+						className: "font-black text-2xl leading-tight",
+						style: { color: "#3a1a8a" },
+						children: [
+							"入間って",
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("br", {}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									style: { color: "#FF6B35" },
-									children: "こんなところ"
-								})
-							]
-						})]
-					}),
+								style: { color: "#FF6B35" },
+								children: "こんなところ"
+							})
+						]
+					})]
+				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "rounded-3xl overflow-hidden",
-						style: {
-							boxShadow: "0 8px 32px rgba(255,107,53,0.18)",
-							border: "2px solid #ffe0cc"
-						},
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "relative bg-orange-100",
-							style: { height: "320px" },
-							children: [
+					className: "rounded-3xl overflow-hidden",
+					style: {
+						boxShadow: "0 8px 32px rgba(255,107,53,0.18)",
+						border: "2px solid #ffe0cc"
+					},
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "relative bg-orange-100",
+						style: { height: "320px" },
+						children: [
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-									src: IMAGES.waterfall,
-									alt: "八重滝の景色",
-									className: "w-full h-full object-cover"
-								}),
+							src: IMAGES.waterfall,
+							alt: "八重滝の景色",
+							className: "w-full h-full object-cover"
+						}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "absolute inset-0",
-									style: { background: "linear-gradient(to top, rgba(255,107,53,0.5) 0%, transparent 60%)" }
-								}),
+							className: "absolute inset-0",
+							style: { background: "linear-gradient(to top, rgba(255,107,53,0.5) 0%, transparent 60%)" }
+						}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "absolute bottom-3 left-4",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "text-xs font-black px-3 py-1 rounded-full text-white",
-										style: { background: "linear-gradient(135deg, #FF6B35, #E84545)" },
-										children: "📍 八重滝（やえたき）"
-									})
-								})
-							]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "p-5 bg-white",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-								className: "font-black text-lg mb-2",
-								style: { color: "#3a1a8a" },
-								children: "八重の滝めぐり"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-sm text-gray-600 font-medium leading-relaxed",
-								children: "島根県雲南市掛合町入間に広がる「八重滝」は、大小8つの滝が連なる神秘的なスポット。 春の新緑・夏の涼・秋の紅葉・冬の静寂と、四季折々の表情が楽しめます。"
-							})]
+							className: "absolute bottom-3 left-4",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-xs font-black px-3 py-1 rounded-full text-white",
+								style: { background: "linear-gradient(135deg, #FF6B35, #E84545)" },
+								children: "📍 八重滝（やえたき）"
+							})
+						})
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "p-5 bg-white",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+							className: "font-black text-lg mb-2",
+							style: { color: "#3a1a8a" },
+							children: "八重の滝めぐり"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-sm text-gray-600 font-medium leading-relaxed",
+							children: "島根県雲南市掛合町入間に広がる「八重滝」は、大小8つの滝が連なる神秘的なスポット。 春の新緑・夏の涼・秋の紅葉・冬の静寂と、四季折々の表情が楽しめます。"
 						})]
-					}),
+					})]
+				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "grid grid-cols-2 gap-4",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-2xl overflow-hidden",
-							style: {
-								boxShadow: "0 4px 16px rgba(106,61,232,0.12)",
-								border: "2px solid #e8e0ff"
-							},
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "relative bg-purple-100",
-								style: { height: "200px" },
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-									src: IMAGES.satoyama,
-									alt: "里山の風景",
-									className: "w-full h-full object-cover"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "absolute inset-0",
-									style: { background: "rgba(106,61,232,0.3)" }
-								})]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "p-3 bg-white",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-									className: "font-black text-sm mb-1",
-									style: { color: "#3a1a8a" },
-									children: "里山の自然"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-xs text-gray-500 font-medium leading-snug",
-									children: "豊かな緑と清らかな水に囲まれた癒しの空間。"
-								})]
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "rounded-2xl overflow-hidden",
-							style: {
-								boxShadow: "0 4px 16px rgba(61,139,255,0.12)",
-								border: "2px solid #d8eeff"
-							},
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "relative bg-blue-100",
-								style: { height: "200px" },
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-									src: IMAGES.village,
-									alt: "入間の風景",
-									className: "w-full h-full object-cover"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "absolute inset-0",
-									style: { background: "rgba(61,139,255,0.25)" }
-								})]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "p-3 bg-white",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
-									className: "font-black text-sm mb-1",
-									style: { color: "#3a1a8a" },
-									children: "のどかな集落"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-									className: "text-xs text-gray-500 font-medium leading-snug",
-									children: "昔ながらの暮らしと人のつながりが残る入間。"
-								})]
-							})]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "rounded-2xl p-5 flex gap-4 items-start",
+					className: "grid grid-cols-2 gap-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "rounded-2xl overflow-hidden",
 						style: {
-							background: "linear-gradient(135deg, #f0eaff 0%, #e8f2ff 100%)",
-							border: "2px solid #c8b0ff"
+							boxShadow: "0 4px 16px rgba(106,61,232,0.12)",
+							border: "2px solid #e8e0ff"
 						},
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-2xl",
-							style: { background: "linear-gradient(135deg, #6A3DE8, #3D8BFF)" },
-							children: "🏫"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "relative bg-purple-100",
+							style: { height: "200px" },
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+								src: IMAGES.satoyama,
+								alt: "里山の風景",
+								className: "w-full h-full object-cover"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "absolute inset-0",
+								style: { background: "rgba(106,61,232,0.3)" }
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "p-3 bg-white",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+								className: "font-black text-sm mb-1",
+								style: { color: "#3a1a8a" },
+								children: "里山の自然"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-gray-500 font-medium leading-snug",
+								children: "豊かな緑と清らかな水に囲まれた癒しの空間。"
+							})]
+						})]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "rounded-2xl overflow-hidden",
+						style: {
+							boxShadow: "0 4px 16px rgba(61,139,255,0.12)",
+							border: "2px solid #d8eeff"
+						},
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "relative bg-blue-100",
+							style: { height: "200px" },
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+								src: IMAGES.village,
+								alt: "入間の風景",
+								className: "w-full h-full object-cover"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "absolute inset-0",
+								style: { background: "rgba(61,139,255,0.25)" }
+							})]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "p-3 bg-white",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
+								className: "font-black text-sm mb-1",
+								style: { color: "#3a1a8a" },
+								children: "のどかな集落"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+								className: "text-xs text-gray-500 font-medium leading-snug",
+								children: "昔ながらの暮らしと人のつながりが残る入間。"
+							})]
+						})]
+					})]
+				}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "rounded-2xl p-5 flex gap-4 items-start",
+					style: {
+						background: "linear-gradient(135deg, #f0eaff 0%, #e8f2ff 100%)",
+						border: "2px solid #c8b0ff"
+					},
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-2xl",
+						style: { background: "linear-gradient(135deg, #6A3DE8, #3D8BFF)" },
+						children: "🏫"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h4", {
 							className: "font-black text-base mb-1",
 							style: { color: "#3a1a8a" },
 							children: "入間交流センター"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-sm text-gray-600 font-medium leading-relaxed",
 							children: "旧小学校を活用した宿泊・交流施設。地域の人々との交流や自然体験が楽しめます。 入間を訪れた際はぜひお立ち寄りを！"
-						})] })]
-					})
+						})]
+					})]
+				})
 				]
 			})
 		});
 	}
 	//#endregion
 	//#region src/sections/Links.tsx
-	var IRUMA_HP_URL = "#placeholder-hp";
+	var IRUMA_HP_URL = "http://www.iruma-ec.com/";
 	var IRUMA_INSTAGRAM_URL = "https://www.instagram.com/koryucenter.iruma/";
 	/** 入間の公式HP・Instagramへのリンクセクション */
 	function Links() {
@@ -12006,53 +12020,53 @@
 				className: "max-w-md mx-auto flex flex-col gap-8",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "text-center",
+					className: "text-center",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "inline-block text-3xl mb-2",
+						children: "🔗"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+						className: "font-black text-2xl",
+						style: { color: "#3a1a8a" },
+						children: "入間をもっと知る"
+					})]
+				}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex flex-col gap-4",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+						href: IRUMA_HP_URL,
+						className: "pill-btn text-white",
+						style: {
+							background: "linear-gradient(135deg, #6A3DE8 0%, #3D8BFF 100%)",
+							textDecoration: "none"
+						},
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "inline-block text-3xl mb-2",
-							children: "🔗"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-							className: "font-black text-2xl",
-							style: { color: "#3a1a8a" },
-							children: "入間をもっと知る"
-						})]
-					}),
+							className: "text-xl",
+							children: "🌐"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "公式ホームページを見る" })]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+						href: IRUMA_INSTAGRAM_URL,
+						target: "_blank",
+						rel: "noopener noreferrer",
+						className: "pill-btn text-white",
+						style: {
+							background: "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
+							textDecoration: "none",
+							boxShadow: "0 6px 20px rgba(131,58,180,0.35)"
+						},
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-xl",
+							children: "📸"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Instagramをフォロー" })]
+					})]
+				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex flex-col gap-4",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-							href: IRUMA_HP_URL,
-							className: "pill-btn text-white",
-							style: {
-								background: "linear-gradient(135deg, #6A3DE8 0%, #3D8BFF 100%)",
-								textDecoration: "none"
-							},
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-xl",
-								children: "🌐"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "公式ホームページを見る" })]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-							href: IRUMA_INSTAGRAM_URL,
-							target: "_blank",
-							rel: "noopener noreferrer",
-							className: "pill-btn text-white",
-							style: {
-								background: "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)",
-								textDecoration: "none",
-								boxShadow: "0 6px 20px rgba(131,58,180,0.35)"
-							},
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "text-xl",
-								children: "📸"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Instagramをフォロー" })]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "text-center flex flex-col items-center gap-3",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "font-black text-sm",
-							style: { color: "#6A3DE8" },
-							children: "写真には必ず！"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HashtagBadge, { size: "lg" })]
-					})
+					className: "text-center flex flex-col items-center gap-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "font-black text-sm",
+						style: { color: "#6A3DE8" },
+						children: "写真には必ず！"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HashtagBadge, { size: "lg" })]
+				})
 				]
 			})
 		});
@@ -12066,22 +12080,24 @@
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "max-w-md mx-auto flex flex-col items-center gap-5",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-white/60 text-xs font-bold mb-1",
 						children: "主催"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 						className: "text-white font-black text-base",
 						children: "入間コミュニティ協議会（仮）"
-					})] }),
+					})]
+				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(HashtagBadge, { size: "md" }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "w-full h-px",
-						style: { background: "rgba(255,255,255,0.15)" }
-					}),
+					className: "w-full h-px",
+					style: { background: "rgba(255,255,255,0.15)" }
+				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "text-white/40 text-xs font-medium space-y-1",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "© 2026 入間コミュニティ協議会（仮）" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "All rights reserved." })]
-					})
+					className: "text-white/40 text-xs font-medium space-y-1",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "© 2026 入間コミュニティ協議会（仮）" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "All rights reserved." })]
+				})
 				]
 			})
 		});
@@ -12103,7 +12119,7 @@
 				height: 60,
 				background
 			},
-			children: paths.map((p, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+			children: paths.map((p, i) => /* @__PURE__ */(0, import_jsx_runtime.jsx)("path", {
 				d: p.d,
 				fill: p.fill,
 				opacity: p.opacity
@@ -12136,50 +12152,52 @@
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Hero, {}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					style: {
-						marginTop: -2,
-						background: "#f8f4ff"
-					},
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionWave, { paths: [{
+				style: {
+					marginTop: -2,
+					background: "#f8f4ff"
+				},
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionWave, {
+					paths: [{
 						d: "M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,0 L0,0 Z",
 						fill: "rgba(106,61,232,0.7)"
-					}] })
-				}),
+					}]
+				})
+			}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(EventIntro, {}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionWave, {
-					background: "#f8f4ff",
-					paths: [{
-						d: "M0,20 C360,60 720,0 1080,40 C1260,60 1380,10 1440,20 L1440,60 L0,60 Z",
-						fill: "#6A3DE8",
-						opacity: .12
-					}, {
-						d: "M0,35 C240,10 480,55 720,30 C960,5 1200,50 1440,35 L1440,60 L0,60 Z",
-						fill: "#3D8BFF",
-						opacity: .1
-					}]
-				}),
+				background: "#f8f4ff",
+				paths: [{
+					d: "M0,20 C360,60 720,0 1080,40 C1260,60 1380,10 1440,20 L1440,60 L0,60 Z",
+					fill: "#6A3DE8",
+					opacity: .12
+				}, {
+					d: "M0,35 C240,10 480,55 720,30 C960,5 1200,50 1440,35 L1440,60 L0,60 Z",
+					fill: "#3D8BFF",
+					opacity: .1
+				}]
+			}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Poster, {}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionWave, {
-					background: "#fffbf0",
-					paths: [{
-						d: "M0,30 C240,0 480,60 720,30 C960,0 1200,60 1440,30 L1440,0 L0,0 Z",
-						fill: "#3D8BFF",
-						opacity: .85
-					}]
-				}),
+				background: "#fffbf0",
+				paths: [{
+					d: "M0,30 C240,0 480,60 720,30 C960,0 1200,60 1440,30 L1440,0 L0,0 Z",
+					fill: "#3D8BFF",
+					opacity: .85
+				}]
+			}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(IrumaIntro, {}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionWave, {
-					background: "#fff8ee",
-					paths: [{
-						d: "M0,40 C360,10 720,60 1080,20 C1260,0 1380,50 1440,40 L1440,60 L0,60 Z",
-						fill: "#6A3DE8",
-						opacity: .12
-					}, {
-						d: "M0,50 C240,20 480,60 720,40 C960,20 1200,55 1440,45 L1440,60 L0,60 Z",
-						fill: "#FF6B35",
-						opacity: .1
-					}]
-				}),
+				background: "#fff8ee",
+				paths: [{
+					d: "M0,40 C360,10 720,60 1080,20 C1260,0 1380,50 1440,40 L1440,60 L0,60 Z",
+					fill: "#6A3DE8",
+					opacity: .12
+				}, {
+					d: "M0,50 C240,20 480,60 720,40 C960,20 1200,55 1440,45 L1440,60 L0,60 Z",
+					fill: "#FF6B35",
+					opacity: .1
+				}]
+			}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Links, {}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Footer, {})
 			]
@@ -12187,6 +12205,6 @@
 	}
 	//#endregion
 	//#region src/main.tsx
-	import_client.createRoot(document.getElementById("root")).render(/* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_react.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(App, {}) }));
+	import_client.createRoot(document.getElementById("root")).render(/* @__PURE__ */(0, import_jsx_runtime.jsx)(import_react.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(App, {}) }));
 	//#endregion
 })();
