@@ -11733,20 +11733,10 @@
 					boxShadow: "0 4px 16px rgba(106,61,232,0.15)",
 					display: "inline-block"
 				},
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					style: {
-						display: "grid",
-						gridTemplateColumns: `repeat(${GRID_SIZE}, 8px)`,
-						gridTemplateRows: `repeat(${GRID_SIZE}, 8px)`,
-						gap: "0"
-					},
-					children: cells.map((filled, i) => /* @__PURE__ */(0, import_jsx_runtime.jsx)("div", {
-						style: {
-							width: 8,
-							height: 8,
-							backgroundColor: filled ? "#1a1a2e" : "transparent"
-						}
-					}, i))
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+					src: "./img/qr.png",
+					alt: "QRコード",
+					className: "w-32 h-32 block"
 				})
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "text-xs text-center font-bold",
@@ -11788,43 +11778,10 @@
 						boxShadow: "0 16px 48px rgba(0,0,0,0.30)",
 						border: "4px solid rgba(255,255,255,0.3)"
 					},
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "w-full flex flex-col items-center justify-center gap-4 py-16 px-8 text-center",
-						style: {
-							background: "linear-gradient(160deg, #4a1fa0 0%, #1a3a8a 100%)",
-							minHeight: 400
-						},
-						children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "w-20 h-20 rounded-full flex items-center justify-center text-4xl",
-							style: { background: "rgba(255,255,255,0.15)" },
-							children: "🏞️"
-						}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-white/50 text-xs font-bold mb-2 tracking-widest",
-								children: "POSTER IMAGE"
-							}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-white font-black text-xl",
-								dangerouslySetInnerHTML: { __html: "<ruby>八重滝<rt>やえだき</rt></ruby>フォトラリー" }
-							}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-white/70 font-bold text-sm mt-1",
-								children: "イベントポスター"
-							})
-							]
-						}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-							className: "px-4 py-1.5 rounded-full text-sm font-black text-white",
-							style: {
-								background: "rgba(255,255,255,0.20)",
-								border: "1px solid rgba(255,255,255,0.35)"
-							},
-							dangerouslySetInnerHTML: { __html: "※ポスター<ruby>画像<rt>がぞう</rt></ruby>は<ruby>後日<rt>ごじつ</rt></ruby><ruby>差<rt>さ</rt></ruby>し<ruby>替<rt>か</rt></ruby>えてください" }
-						})
-						]
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+						src: "./img/001.png",
+						alt: "イベントポスター",
+						className: "w-full h-auto block"
 					})
 				}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -11837,10 +11794,7 @@
 						dangerouslySetInnerHTML: { __html: "📲 このページをシェア" }
 					}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QRPlaceholder, {}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "text-xs text-center text-gray-400 font-bold mt-3",
-						dangerouslySetInnerHTML: { __html: "※URLは<ruby>後日<rt>ごじつ</rt></ruby><ruby>差<rt>さ</rt></ruby>し<ruby>替<rt>か</rt></ruby>え<ruby>予定<rt>よてい</rt></ruby>" }
-					})
+					// The temporary text saying URL will be replaced later is removed.
 					]
 				})
 				]
